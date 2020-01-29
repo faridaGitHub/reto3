@@ -8,9 +8,7 @@ public class Principal {
 		
 
 		try {
-			System.out.println("camilo");
-			
-			System.out.println("Hola");
+		
 			
 			Inicio.mControladorInicio();
 	
