@@ -10,8 +10,10 @@ public class Principal {
 		try {
 			System.out.println("camilo");
 			
+			System.out.println("Hola");
+			
 			Inicio.mControladorInicio();
-
+	
 			
 			
 		} catch (Exception e) {
@@ -20,6 +22,7 @@ public class Principal {
 		
 		}
 	}
+	
 	
 
 }
