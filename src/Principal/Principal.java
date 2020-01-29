@@ -8,7 +8,7 @@ public class Principal {
 		
 
 		try {
-			System.out.println("Camilo");
+			System.out.println("camilo");
 			
 			Inicio.mControladorInicio();
 
@@ -20,7 +20,6 @@ public class Principal {
 		
 		}
 	}
-	
 	
 
 }
