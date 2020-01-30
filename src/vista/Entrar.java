@@ -15,20 +15,30 @@ import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 
 public class Entrar extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldDni;
-	private JTextField textFieldContraseña;
 	private JButton btnContinuar;
 	private JButton btnSalir;
+	private JPasswordField passwordField;
 	
 	
 	//get-set
+	
 	public JButton getBtnSalir() {
 		return btnSalir;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
 	}
 
 	public void setBtnSalir(JButton btnSalir) {
@@ -41,14 +51,6 @@ public class Entrar extends JFrame {
 
 	public void setTextFieldDni(JTextField textFieldDni) {
 		this.textFieldDni = textFieldDni;
-	}
-
-	public JTextField getTextFieldContraseña() {
-		return textFieldContraseña;
-	}
-
-	public void setTextFieldContraseña(JTextField textFieldContraseña) {
-		this.textFieldContraseña = textFieldContraseña;
 	}
 
 	public JButton getBtnContinuar() {
@@ -118,24 +120,20 @@ public class Entrar extends JFrame {
 		panel.add(textFieldDni);
 		textFieldDni.setColumns(10);
 		
-		textFieldContraseña = new JTextField();
-		textFieldContraseña.setColumns(10);
-		textFieldContraseña.setBounds(236, 140, 188, 27);
-		panel.add(textFieldContraseña);
-		
 		btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.setBackground(UIManager.getColor("ToggleButton.light"));
 		btnContinuar.setFont(new Font("Arial", Font.BOLD, 12));
-		btnContinuar.setBounds(46, 197, 162, 48);
+		btnContinuar.setBounds(26, 197, 162, 48);
 		panel.add(btnContinuar);
 		
 		btnSalir = new JButton("SALIR");
 		btnSalir.setBackground(UIManager.getColor("ToggleButton.light"));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 12));
-		btnSalir.setBounds(300, 197, 141, 48);
+		btnSalir.setBounds(337, 197, 141, 48);
 		panel.add(btnSalir);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(236, 147, 188, 27);
+		panel.add(passwordField);
 	}
-
-	
-
 }

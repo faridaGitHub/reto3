@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
 import vista.Trayecto;
@@ -10,7 +11,6 @@ import vista.Trayecto;
 public class ControladorTrayecto implements ActionListener{
 
 	private Trayecto ventanaTrayecto;
-	
 	
 	public ControladorTrayecto(Trayecto pTrayecto) {
 		
@@ -28,7 +28,9 @@ public class ControladorTrayecto implements ActionListener{
 		this.ventanaTrayecto.getBtnSalir().addActionListener(this);
 		this.ventanaTrayecto.getBtnSalir().setActionCommand("btnSalir");
 
-
+		this.ventanaTrayecto.getBtnRegresar().addActionListener(this);
+		this.ventanaTrayecto.getBtnRegresar().setActionCommand("BtnRegresar");
+		
 	}
 
 	
@@ -56,6 +58,17 @@ public class ControladorTrayecto implements ActionListener{
 				
 				ventanaTrayecto.dispose();
 				
+				break;
+				
+			case "BtnRegresar":
+				
+				Billete ventanaBillete = new Billete();
+				ventanaBillete.setVisible(true);
+				
+				ControladorBillete controladorBillete = new ControladorBillete(ventanaBillete);
+
+				ventanaTrayecto.dispose();
+
 				break;
 			
 			}

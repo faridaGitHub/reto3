@@ -77,7 +77,7 @@ public class ControladorEntrar implements ActionListener {
 	private void validarUsuario() throws HeadlessException, SQLException {
 
 		String dni = this.ventanaEntrar.getTextFieldDni().getText();
-		String contrasena = this.ventanaEntrar.getTextFieldContraseña().getText();
+		String contrasena = this.ventanaEntrar.getPasswordField().getText();
 
 		ClienteBD clienteBD = new ClienteBD();
 
