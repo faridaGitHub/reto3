@@ -40,6 +40,7 @@ public class ControladorTrayecto implements ActionListener{
 			
 			case "btnContinuar":
 				
+
 				Fechas ventanaFechas = new Fechas();
 				ventanaFechas.setVisible(true);
 				

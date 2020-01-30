@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorTrayecto;
+import modelo.ClienteBD;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -13,6 +14,8 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Trayecto extends JFrame {
@@ -22,11 +25,21 @@ public class Trayecto extends JFrame {
 	private JButton btnSalir;
 	public static JTextField textFieldOrigen;
 	private JButton btnRegresar;
+	private JComboBox comboBoxDestino;
 	private String origen;
 
 	// get-set
+
 	public JButton getBtnContinuar() {
 		return btnContinuar;
+	}
+
+	public JComboBox getComboBoxDestino() {
+		return comboBoxDestino;
+	}
+
+	public void setComboBoxDestino(JComboBox comboBoxDestino) {
+		this.comboBoxDestino = comboBoxDestino;
 	}
 
 	public void setBtnContinuar(JButton btnContinuar) {
@@ -51,30 +64,31 @@ public class Trayecto extends JFrame {
 	}
 
 	public void setOrigen(String origen) {
-		
-		this.origen=origen;
-		
+
+		this.origen = origen;
+
 		textFieldOrigen.setText(origen);
 	}
-	
+
 	// otros metodos
 	public static void mInicioTrayecto() {
 
 		try {
-			
+
 			Trayecto ventanaTrayecto = new Trayecto();
 			ventanaTrayecto.setVisible(true);
 
 			ControladorTrayecto controladorTrayecto = new ControladorTrayecto(ventanaTrayecto);
 
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
-	public Trayecto() {
+	@SuppressWarnings("unchecked")
+	public Trayecto() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -93,10 +107,6 @@ public class Trayecto extends JFrame {
 		lblTrayexc.setFont(new Font("Arial", Font.BOLD, 30));
 		panel.add(lblTrayexc);
 
-		JComboBox comboBoxOrigen = new JComboBox();
-		comboBoxOrigen.setBounds(45, 137, 96, 22);
-		panel.add(comboBoxOrigen);
-
 		JLabel lblOrigen = new JLabel("ORIGEN");
 		lblOrigen.setFont(new Font("Arial", Font.BOLD, 25));
 		lblOrigen.setBounds(45, 83, 108, 31);
@@ -107,8 +117,19 @@ public class Trayecto extends JFrame {
 		lblDestino.setBounds(288, 83, 125, 31);
 		panel.add(lblDestino);
 
-		JComboBox comboBoxDestino = new JComboBox();
-		comboBoxDestino.setBounds(288, 137, 108, 22);
+		comboBoxDestino = new JComboBox();
+
+		ArrayList<String> paradas = new ArrayList<String>();
+
+		paradas = ClienteBD.llenar_combo();
+
+		for (int i = 0; i < paradas.size(); i++) {
+
+			comboBoxDestino.addItem(paradas.get(i));
+
+		}
+
+		comboBoxDestino.setBounds(271, 137, 153, 22);
 		panel.add(comboBoxDestino);
 
 		btnContinuar = new JButton("CONTINUAR");
@@ -118,7 +139,7 @@ public class Trayecto extends JFrame {
 		btnSalir = new JButton("SALIR");
 		btnSalir.setBounds(324, 219, 89, 31);
 		panel.add(btnSalir);
-		
+
 		textFieldOrigen = new JTextField();
 		textFieldOrigen.setEditable(false);
 		textFieldOrigen.setBounds(45, 138, 96, 20);
@@ -128,7 +149,7 @@ public class Trayecto extends JFrame {
 		btnRegresar = new JButton("REGRESAR");
 		btnRegresar.setBounds(150, 219, 134, 31);
 		panel.add(btnRegresar);
-		
+
 	}
 
 }

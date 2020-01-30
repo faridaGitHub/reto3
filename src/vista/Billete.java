@@ -125,7 +125,7 @@ public class Billete extends JFrame {
 
 		JLabel lblDestino = new JLabel("DESTINO");
 		lblDestino.setFont(new Font("Lucida Sans", Font.BOLD, 20));
-		lblDestino.setBounds(282, 80, 104, 24);
+		lblDestino.setBounds(349, 80, 104, 24);
 		panel.add(lblDestino);
 
 		comboBoxOrigen = new JComboBox<>();
@@ -141,12 +141,12 @@ public class Billete extends JFrame {
 			}
 		});
 		comboBoxOrigen.setModel(new DefaultComboBoxModel(new String[] {"Bilbao", "Plentzia", "Muskiz", "Balmaseda", "Durango"}));
-		comboBoxOrigen.setBounds(40, 125, 79, 22);
+		comboBoxOrigen.setBounds(40, 125, 111, 22);
 		panel.add(comboBoxOrigen);
 
 		this.comboBoxDestino = new JComboBox();
 		comboBoxDestino.setModel(new DefaultComboBoxModel(new String[] {"Muskiz", "Balmaseda", "Plentzia", "Bilbao", "Durango"}));
-		comboBoxDestino.setBounds(362, 125, 79, 22);
+		comboBoxDestino.setBounds(329, 125, 112, 22);
 		panel.add(comboBoxDestino);
 
 		btnContinuar = new JButton("CONTINUAR");

@@ -34,13 +34,53 @@ public class Fechas extends JFrame {
 	private JButton btnSalir;
 	private JTextField textFieldFechaIda;
 	private JTextField textFieldFechaVuelta;
-	
-	
+	private String destino;
 	
 	//get-set
 	
 	public JButton getBtnContinuar() {
 		return btnContinuar;
+	}
+
+	public JTextField getTextFieldDestino() {
+		return textFieldDestino;
+	}
+
+	public void setTextFieldDestino(JTextField textFieldDestino) {
+		this.textFieldDestino = textFieldDestino;
+	}
+
+	public JTextField getTextFieldPrecio() {
+		return textFieldPrecio;
+	}
+
+	public void setTextFieldPrecio(JTextField textFieldPrecio) {
+		this.textFieldPrecio = textFieldPrecio;
+	}
+
+	public JTextField getTextFieldFechaIda() {
+		return textFieldFechaIda;
+	}
+
+	public void setTextFieldFechaIda(JTextField textFieldFechaIda) {
+		this.textFieldFechaIda = textFieldFechaIda;
+	}
+
+	public JTextField getTextFieldFechaVuelta() {
+		return textFieldFechaVuelta;
+	}
+
+	public void setTextFieldFechaVuelta(JTextField textFieldFechaVuelta) {
+		this.textFieldFechaVuelta = textFieldFechaVuelta;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+		textFieldDestino.setText(destino);
 	}
 
 	public void setBtnContinuar(JButton btnContinuar) {

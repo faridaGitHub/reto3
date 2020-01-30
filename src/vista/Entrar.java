@@ -132,7 +132,7 @@ public class Entrar extends JFrame {
 		btnSalir.setBounds(337, 197, 141, 48);
 		panel.add(btnSalir);
 		
-		passwordField = new JPasswordField();
+		passwordField= new JPasswordField();
 		passwordField.setBounds(236, 147, 188, 27);
 		panel.add(passwordField);
 	}

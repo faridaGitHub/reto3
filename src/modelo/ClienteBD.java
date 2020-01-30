@@ -50,9 +50,6 @@ public class ClienteBD {
 
 		boolean existeUsuario = false;
 
-		
-		
-
 		try {
 			
 			Connection con= Conexion.conectar();
@@ -71,21 +68,50 @@ public class ClienteBD {
 
 			ps.close();
 			rs.close();
-			
 			con.close();
 			
 
 		} catch (SQLException e) {
 			
 			System.out.println("Error: Clase Contacto, método buscar");
-			e.printStackTrace();
+			e.printStackTrace();			
+		}
+
+		return existeUsuario;
+	}
+
+	
+	public static ArrayList<String> llenar_combo() throws SQLException{
+		
+		Connection con= Conexion.conectar();
+		
+		String q="SELECT * FROM PARADA ";
+		PreparedStatement ps=con.prepareStatement(q);
+		
+		ResultSet rs=ps.executeQuery();
+		
+		ArrayList<String> paradas= new ArrayList<String>();
+		
+		try {
 			
+			ps=con.prepareStatement(q);
+		
+			while (rs.next()) {
+				paradas.add(rs.getString("nombre"));
+			}
+
+			ps.close();
+			rs.close();
+			con.close();
+			
+		} catch (Exception e) {
+			
+			System.out.println("Error: Clase Contacto, método array");
 			
 		}
 		
+		return paradas;
 		
-
-		return existeUsuario;
 	}
 
 }
