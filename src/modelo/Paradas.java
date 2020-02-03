@@ -2,7 +2,7 @@ package modelo;
 
 public class Paradas {
 	
-	private int cod_parada;
+	private String cod_parada;
 	private String calle;
 	private String nombre;
 	private String coordenadas;
@@ -11,7 +11,7 @@ public class Paradas {
 		super();
 	}
 
-	public Paradas(int cod_parada, String calle, String nombre, String coordenadas) {
+	public Paradas(String cod_parada, String calle, String nombre, String coordenadas) {
 		super();
 		this.cod_parada = cod_parada;
 		this.calle = calle;
@@ -19,11 +19,11 @@ public class Paradas {
 		this.coordenadas = coordenadas;
 	}
 
-	public int getCod_parada() {
+	public String getCodparada() {
 		return cod_parada;
 	}
 
-	public void setCod_parada(int cod_parada) {
+	public void setCodparada(String cod_parada) {
 		this.cod_parada = cod_parada;
 	}
 

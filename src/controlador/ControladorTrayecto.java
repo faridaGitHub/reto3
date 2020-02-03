@@ -2,7 +2,13 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import modelo.Lineas;
+import modelo.LineasBD;
+import modelo.Paradas;
+import modelo.ParadasBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -11,12 +17,29 @@ import vista.Trayecto;
 public class ControladorTrayecto implements ActionListener{
 
 	private Trayecto ventanaTrayecto;
+	private Billete ventanaBillete;
+	
 	
 	public ControladorTrayecto(Trayecto pTrayecto) {
 		
 		this.ventanaTrayecto=pTrayecto;
 		
 		inicializarControlador();
+		
+		
+		
+	}
+	
+	public ControladorTrayecto(Trayecto pTrayecto, Billete pVentanBillete) {
+		
+		this.ventanaTrayecto=pTrayecto;
+		this.ventanaBillete = pVentanBillete;
+		
+		inicializarControlador();
+		
+		
+		rellenarComboParadas();
+		
 		
 	}
 	
@@ -63,7 +86,13 @@ public class ControladorTrayecto implements ActionListener{
 				
 			case "BtnRegresar":
 				
-				Billete ventanaBillete = new Billete();
+			Billete ventanaBillete=null;
+			try {
+				ventanaBillete = new Billete();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 				ventanaBillete.setVisible(true);
 				
 				ControladorBillete controladorBillete = new ControladorBillete(ventanaBillete);
@@ -75,5 +104,36 @@ public class ControladorTrayecto implements ActionListener{
 			}
 			
 		}
+
+
+
+	
+	private void rellenarComboParadas() {
+		
+	
+		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
+		
+		Lineas miLinea = (Lineas) this.ventanaBillete.getcomboBoxLinea().getSelectedItem();
+		 
+
+		try {
+			
+			paradas = ParadasBD.obtenerParadas(miLinea.getCodlinea());
+
+			for (int i = 0; i < paradas.size(); i++) {
+
+				this.ventanaTrayecto.getComboBoxDestino().addItem(paradas.get(i));
+				
+				this.ventanaTrayecto.getComboBoxOrigen().addItem(paradas.get(i));
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 
 }

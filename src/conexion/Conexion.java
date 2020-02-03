@@ -4,16 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import controlador.ControladorConexion;
+
 public class Conexion {
+	
 	
 	
 	public static Connection conectar() {
 		Connection con = null;
-		
 		String password = "";
-		String usuario = "root"; //root@localhost
-		String url = "jdbc:mysql://localhost:3306/reto3dam?user=" + usuario
-				                                     + "&password=" + password;
+		if (ControladorConexion.obtenerContraseña()!=null){
+			password = ControladorConexion.obtenerContraseña();	
+		}
+		
+		String usuario = ControladorConexion.obtenerUsuario(); //root@localhost
+		String ruta = ControladorConexion.obtenerRuta();
+		String url = ruta + "?user=" + usuario + "&password=" + password;
 		try {
 			con = DriverManager.getConnection(url);
 			if (con != null) {

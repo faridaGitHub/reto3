@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import controlador.ControladorBillete;
+import modelo.ClienteBD;
+import modelo.Lineas;
+import modelo.LineasBD;
 import modelo.Paradas;
 
 import java.awt.Color;
@@ -26,6 +29,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Billete extends JFrame {
@@ -33,33 +38,16 @@ public class Billete extends JFrame {
 	private JPanel contentPane;
 	private JButton btnContinuar;
 	private JButton btnSalir;
-	private JComboBox comboBoxOrigen;
-	private JComboBox comboBoxDestino;
-	public String comOrigen;
+	private JComboBox comboBoxLinea;
+	
 
 	// get-set
-	public String getComOrigen() {
-		return comOrigen;
+	public JComboBox getcomboBoxLinea() {
+		return comboBoxLinea;
 	}
 
-	public void setComOrigen(String comOrigen) {
-		this.comOrigen = comOrigen;
-	}
-
-	public JComboBox getComboBoxOrigen() {
-		return comboBoxOrigen;
-	}
-
-	public void setComboBoxOrigen(JComboBox comboBoxOrigen) {
-		this.comboBoxOrigen = comboBoxOrigen;
-	}
-
-	public JComboBox getComboBoxDestino() {
-		return comboBoxDestino;
-	}
-
-	public void setComboBoxDestino(JComboBox comboBoxDestino) {
-		this.comboBoxDestino = comboBoxDestino;
+	public void setcomboBoxLinea(JComboBox comboBoxLinea) {
+		this.comboBoxLinea = comboBoxLinea;
 	}
 
 	public JButton getBtnContinuar() {
@@ -96,7 +84,8 @@ public class Billete extends JFrame {
 
 	}
 
-	public Billete() {
+	@SuppressWarnings("unchecked")
+	public Billete() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 615, 366);
 		contentPane = new JPanel();
@@ -118,36 +107,17 @@ public class Billete extends JFrame {
 		lblComprarBillete.setFont(new Font("Lucida Sans", Font.BOLD, 30));
 		panel.add(lblComprarBillete);
 
-		JLabel lblOrigen = new JLabel("ORIGEN");
+		JLabel lblOrigen = new JLabel("SELECIONE LINEA ");
 		lblOrigen.setFont(new Font("Lucida Sans", Font.BOLD, 20));
-		lblOrigen.setBounds(40, 80, 79, 24);
+		lblOrigen.setBounds(40, 80, 218, 24);
 		panel.add(lblOrigen);
 
-		JLabel lblDestino = new JLabel("DESTINO");
-		lblDestino.setFont(new Font("Lucida Sans", Font.BOLD, 20));
-		lblDestino.setBounds(349, 80, 104, 24);
-		panel.add(lblDestino);
-
-		comboBoxOrigen = new JComboBox<>();
+		comboBoxLinea = new JComboBox<>();
 		
-		comboBoxOrigen.addItemListener(new ItemListener() {
-
-			public void itemStateChanged(ItemEvent e) {
-
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-
-					comOrigen = e.getItem().toString();
-				}
-			}
-		});
-		comboBoxOrigen.setModel(new DefaultComboBoxModel(new String[] {"Bilbao", "Plentzia", "Muskiz", "Balmaseda", "Durango"}));
-		comboBoxOrigen.setBounds(40, 125, 111, 22);
-		panel.add(comboBoxOrigen);
-
-		this.comboBoxDestino = new JComboBox();
-		comboBoxDestino.setModel(new DefaultComboBoxModel(new String[] {"Muskiz", "Balmaseda", "Plentzia", "Bilbao", "Durango"}));
-		comboBoxDestino.setBounds(329, 125, 112, 22);
-		panel.add(comboBoxDestino);
+		
+		
+		comboBoxLinea.setBounds(40, 125, 162, 22);
+		panel.add(comboBoxLinea);
 
 		btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.setBackground(UIManager.getColor("ToggleButton.light"));
@@ -160,5 +130,15 @@ public class Billete extends JFrame {
 		btnSalir.setFont(new Font("Lucida Sans", Font.BOLD, 12));
 		btnSalir.setBounds(329, 197, 141, 48);
 		panel.add(btnSalir);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"IDA", "VUELTA"}));
+		comboBox.setBounds(365, 125, 84, 22);
+		panel.add(comboBox);
+		
+		JLabel lblTipoBillete = new JLabel("TIPO BILLETE");
+		lblTipoBillete.setFont(new Font("Lucida Sans", Font.BOLD, 20));
+		lblTipoBillete.setBounds(320, 81, 162, 23);
+		panel.add(lblTipoBillete);
 	}
 }

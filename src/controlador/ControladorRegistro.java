@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,7 +87,7 @@ public class ControladorRegistro implements ActionListener {
 
 	}
 
-	private void validarUsuario() {
+	private void validarUsuario() throws SQLException {
 
 		String dni = this.ventanaRegistro.getTextFieDni().getText();
 		String contrasena = this.ventanaRegistro.getTextFieContraseña().getText();
@@ -127,21 +128,8 @@ public class ControladorRegistro implements ActionListener {
 		cliente.setNombre(ventanaRegistro.getTextFieNombre().getText());
 
 		cliente.setApellidos(ventanaRegistro.getTextFielApellido().getText());
-		
-
-		if (ventanaRegistro.getTextFecNac().getText().equals("yyyy-dd-mm")) {
-			
-			cliente.setFechaNaci(ventanaRegistro.getTextFecNac().getText()); 
-			
-			
-		}else{
-			
-			JOptionPane.showMessageDialog(null, "la fecha se introduce año-mes-dia");
-			
-			aux=false;
-			
-		}
-		
+	
+		cliente.setFechaNaci(ventanaRegistro.getTextFecNac().getText()); 
 
 		if (ventanaRegistro.getComboBoxSexo().getSelectedItem().equals("HOMBRE")) {
 

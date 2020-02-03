@@ -2,7 +2,8 @@ package modelo;
 
 public class Lineas {
 	
-	private int cod_linea;
+	private String cod_linea;
+	private String nombre;
 	private String autobuses;
 	private String municipios;
 	
@@ -10,23 +11,36 @@ public class Lineas {
 		
 	}
 
-	public Lineas(int codlinea, String autobuses, String municipios) {
+	public Lineas(String codlinea, String autobuses, String municipios) {
 		super();
 		this.cod_linea = codlinea;
 		this.autobuses = autobuses;
 		this.municipios = municipios;
 	}
 
-	public int getCodlinea() {
+	public String getCodlinea() {
 		return cod_linea;
 	}
 
-	public void setCodlinea(int codlinea) {
+	public void setCodlinea(String codlinea) {
 		this.cod_linea = codlinea;
 	}
 
 	public String getAutobuses() {
 		return autobuses;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
+	public String toString() {
+		return this.nombre;
 	}
 
 	public void setAutobuses(String autobuses) {

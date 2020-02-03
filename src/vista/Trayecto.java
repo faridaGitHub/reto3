@@ -17,16 +17,18 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class Trayecto extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnContinuar;
 	private JButton btnSalir;
-	public static JTextField textFieldOrigen;
 	private JButton btnRegresar;
 	private JComboBox comboBoxDestino;
-	private String origen;
+	private JComboBox comboBoxOrigen;
+
 
 	// get-set
 
@@ -36,6 +38,14 @@ public class Trayecto extends JFrame {
 
 	public JComboBox getComboBoxDestino() {
 		return comboBoxDestino;
+	}
+	
+	public JComboBox getComboBoxOrigen() {
+		return comboBoxOrigen;
+	}
+
+	public void setComboBoxOrigen(JComboBox comboBoxOrigen) {
+		this.comboBoxOrigen = comboBoxOrigen;
 	}
 
 	public void setComboBoxDestino(JComboBox comboBoxDestino) {
@@ -63,12 +73,6 @@ public class Trayecto extends JFrame {
 		this.btnRegresar = btnRegresar;
 	}
 
-	public void setOrigen(String origen) {
-
-		this.origen = origen;
-
-		textFieldOrigen.setText(origen);
-	}
 
 	// otros metodos
 	public static void mInicioTrayecto() {
@@ -90,66 +94,55 @@ public class Trayecto extends JFrame {
 	@SuppressWarnings("unchecked")
 	public Trayecto() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 521, 351);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 261);
+		panel.setBounds(10, 11, 485, 290);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblTrayexc = new JLabel("TRAYECTO");
-		lblTrayexc.setBounds(120, 11, 172, 36);
+		lblTrayexc.setBounds(143, 23, 172, 36);
 		lblTrayexc.setFont(new Font("Arial", Font.BOLD, 30));
 		panel.add(lblTrayexc);
 
 		JLabel lblOrigen = new JLabel("ORIGEN");
 		lblOrigen.setFont(new Font("Arial", Font.BOLD, 25));
-		lblOrigen.setBounds(45, 83, 108, 31);
+		lblOrigen.setBounds(24, 84, 108, 31);
 		panel.add(lblOrigen);
 
 		JLabel lblDestino = new JLabel("DESTINO");
 		lblDestino.setFont(new Font("Arial", Font.BOLD, 25));
-		lblDestino.setBounds(288, 83, 125, 31);
+		lblDestino.setBounds(329, 84, 125, 31);
 		panel.add(lblDestino);
 
 		comboBoxDestino = new JComboBox();
 
-		ArrayList<String> paradas = new ArrayList<String>();
-
-		paradas = ClienteBD.llenar_combo();
-
-		for (int i = 0; i < paradas.size(); i++) {
-
-			comboBoxDestino.addItem(paradas.get(i));
-
-		}
-
-		comboBoxDestino.setBounds(271, 137, 153, 22);
+		comboBoxDestino.setBounds(301, 143, 153, 22);
 		panel.add(comboBoxDestino);
 
 		btnContinuar = new JButton("CONTINUAR");
-		btnContinuar.setBounds(10, 219, 108, 31);
+		btnContinuar.setBounds(10, 237, 108, 31);
 		panel.add(btnContinuar);
 
 		btnSalir = new JButton("SALIR");
-		btnSalir.setBounds(324, 219, 89, 31);
+		btnSalir.setBounds(359, 237, 89, 31);
 		panel.add(btnSalir);
 
-		textFieldOrigen = new JTextField();
-		textFieldOrigen.setEditable(false);
-		textFieldOrigen.setBounds(45, 138, 96, 20);
-		panel.add(textFieldOrigen);
-		textFieldOrigen.setColumns(10);
-
 		btnRegresar = new JButton("REGRESAR");
-		btnRegresar.setBounds(150, 219, 134, 31);
+		btnRegresar.setBounds(181, 237, 134, 31);
 		panel.add(btnRegresar);
+		
+		comboBoxOrigen = new JComboBox();
+		comboBoxOrigen.setBounds(24, 143, 153, 22);
+		panel.add(comboBoxOrigen);
 
 	}
-
 }

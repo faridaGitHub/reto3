@@ -2,10 +2,13 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
+import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
 import vista.Pagar;
+import vista.Trayecto;
 
 public class ControladorFechas implements ActionListener{
 	
@@ -27,6 +30,9 @@ public class ControladorFechas implements ActionListener{
 		
 		this.ventanFechas.getBtnSalir().addActionListener(this);
 		this.ventanFechas.getBtnSalir().setActionCommand("btnSalir");
+		
+		this.ventanFechas.getBtnRegresar().addActionListener(this);
+		this.ventanFechas.getBtnRegresar().setActionCommand("BtnRegresar");
 		
 	}
 	
@@ -51,6 +57,23 @@ public class ControladorFechas implements ActionListener{
 			
 			ventanFechas.dispose();
 			
+			break;
+			
+		case "BtnRegresar":
+			
+			Billete ventanaBillete=null;
+			try {
+				ventanaBillete = new Billete();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			ventanaBillete.setVisible(true);
+			
+			ControladorBillete controladorBillete = new ControladorBillete(ventanaBillete);
+
+			ventanFechas.dispose();
+
 			break;
 			
 		}

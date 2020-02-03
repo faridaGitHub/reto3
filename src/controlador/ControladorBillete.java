@@ -3,6 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import modelo.Lineas;
+import modelo.LineasBD;
 import vista.Billete;
 import vista.Inicio;
 import vista.Trayecto;
@@ -27,6 +31,8 @@ public class ControladorBillete implements ActionListener {
 		this.ventanaBillete.getBtnSalir().addActionListener(this);
 		this.ventanaBillete.getBtnSalir().setActionCommand("btnSalir");
 
+		this.rellenarComboLineas();
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -35,29 +41,20 @@ public class ControladorBillete implements ActionListener {
 
 		case "btnContinuar":
 
-			String prueba;
+			Trayecto ventanaTrayecto = null;
 
-			Trayecto ventanaTrayecto=null;
-			
 			try {
-				
+
 				ventanaTrayecto = new Trayecto();
-				
+
 			} catch (SQLException e1) {
-				
-				
+
 				e1.printStackTrace();
 			}
 
-			
-
-			prueba = ventanaBillete.getComboBoxOrigen().getSelectedItem().toString();
-
-			ventanaTrayecto.setOrigen(prueba);
-
 			ventanaTrayecto.setVisible(true);
 
-			ControladorTrayecto controladorTrayecto = new ControladorTrayecto(ventanaTrayecto);
+			ControladorTrayecto controladorTrayecto = new ControladorTrayecto(ventanaTrayecto, this.ventanaBillete);
 
 			ventanaBillete.dispose();
 
@@ -74,6 +71,26 @@ public class ControladorBillete implements ActionListener {
 
 			break;
 
+		}
+
+	}
+
+	private void rellenarComboLineas() {
+
+		ArrayList<Lineas> lineas = new ArrayList<Lineas>();
+
+		try {
+			lineas = LineasBD.obtenerLineas();
+
+			for (int i = 0; i < lineas.size(); i++) {
+
+				this.ventanaBillete.getcomboBoxLinea().addItem(lineas.get(i));
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

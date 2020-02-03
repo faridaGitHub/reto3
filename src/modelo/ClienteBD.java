@@ -54,8 +54,8 @@ public class ClienteBD {
 			
 			Connection con= Conexion.conectar();
 			
-			String query="SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
-			PreparedStatement ps=con.prepareStatement(query);
+			String sql="SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
+			PreparedStatement ps=con.prepareStatement(sql);
 
 			ps.setString(1, dni);
 			ps.setString(2, contrasena);
@@ -81,37 +81,7 @@ public class ClienteBD {
 	}
 
 	
-	public static ArrayList<String> llenar_combo() throws SQLException{
-		
-		Connection con= Conexion.conectar();
-		
-		String q="SELECT * FROM PARADA ";
-		PreparedStatement ps=con.prepareStatement(q);
-		
-		ResultSet rs=ps.executeQuery();
-		
-		ArrayList<String> paradas= new ArrayList<String>();
-		
-		try {
-			
-			ps=con.prepareStatement(q);
-		
-			while (rs.next()) {
-				paradas.add(rs.getString("nombre"));
-			}
-
-			ps.close();
-			rs.close();
-			con.close();
-			
-		} catch (Exception e) {
-			
-			System.out.println("Error: Clase Contacto, método array");
-			
-		}
-		
-		return paradas;
-		
-	}
+	
+	
 
 }
