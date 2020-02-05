@@ -81,7 +81,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnEntrar.setBackground(Color.LIGHT_GRAY);
+		btnEntrar.setBackground(UIManager.getColor("ToggleButton.light"));
 		btnEntrar.setFont(new Font("Arial", Font.BOLD, 12));
 		btnEntrar.setBounds(37, 187, 148, 48);
 		panel.add(btnEntrar);
