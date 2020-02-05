@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class ControladorConexion {
 	public static void consultarDatos() {
 
 		try {
-			File fich = new File("C:\\Users\\admin1\\Desktop\\Conex.txt");
+			File fich = new File("E:\\RETO 3\\m-v-c");
 			Scanner leer = new Scanner(fich);
 			while (leer.hasNextLine()) {
 				String datoLeido = leer.nextLine();

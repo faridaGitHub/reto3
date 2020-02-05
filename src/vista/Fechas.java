@@ -1,7 +1,5 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,11 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import controlador.ControladorFechas;
-
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,16 +25,73 @@ import com.toedter.calendar.JDateChooser;
 public class Fechas extends JFrame {
 
 	private JPanel contentPane;
+	
 	private JTextField textFieldPrecio;
+	
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
-	private String destino;
 	
+	private String fecha;
+	private String Hora;
+	
+	private JComboBox comboBoxHoraIda;
+	private JComboBox comboBoxHoraVuelta;
+	
+	private JDateChooser dateChooserIda;
+	private JDateChooser dateChooserVuelta;
+
 	//get-set
 	
 	public JButton getBtnContinuar() {
 		return btnContinuar;
+	}
+
+	public JDateChooser getDateChooserIda() {
+		return dateChooserIda;
+	}
+
+	public void setDateChooserIda(JDateChooser dateChooserIda) {
+		this.dateChooserIda = dateChooserIda;
+	}
+
+	public JDateChooser getDateChooserVuelta() {
+		return dateChooserVuelta;
+	}
+
+	public void setDateChooserVuelta(JDateChooser dateChooserVuelta) {
+		this.dateChooserVuelta = dateChooserVuelta;
+	}
+
+	public String getHora() {
+		return Hora;
+	}
+
+	public void setfecha(String fecha) {
+		Hora = fecha;
+	}
+	public String getfecha() {
+		return fecha;
+	}
+
+	public void setHora(String hora) {
+		Hora = hora;
+	}
+
+	public JComboBox getComboBoxHoraIda() {
+		return comboBoxHoraIda;
+	}
+
+	public void setComboBoxHoraIda(JComboBox comboBoxHoraIda) {
+		this.comboBoxHoraIda = comboBoxHoraIda;
+	}
+
+	public JComboBox getComboBoxHoraVuelta() {
+		return comboBoxHoraVuelta;
+	}
+
+	public void setComboBoxHoraVuelta(JComboBox comboBoxHoraVuelta) {
+		this.comboBoxHoraVuelta = comboBoxHoraVuelta;
 	}
 
 	public JButton getBtnRegresar() {
@@ -57,10 +108,6 @@ public class Fechas extends JFrame {
 
 	public void setTextFieldPrecio(JTextField textFieldPrecio) {
 		this.textFieldPrecio = textFieldPrecio;
-	}
-
-	public String getDestino() {
-		return destino;
 	}
 
 	public void setBtnContinuar(JButton btnContinuar) {
@@ -140,31 +187,21 @@ public class Fechas extends JFrame {
 		lblHora.setBounds(265, 91, 74, 14);
 		panel.add(lblHora);
 		
-		JComboBox comboBoxHoraIda =  new JComboBox();
+		comboBoxHoraIda =  new JComboBox();
 		comboBoxHoraIda.setToolTipText("");
 		comboBoxHoraIda.setMaximumRowCount(2);
 		comboBoxHoraIda.setBounds(349, 87, 127, 22);
 		panel.add(comboBoxHoraIda);
-		
-		ArrayList<String> horaIda = new ArrayList<String>();
-		horaIda.add("10:30");
-		horaIda.add("12:30");
-		horaIda.add("14:30");
-		
-		for(int i=0; i < horaIda.size() ; i++) {
-			String x = horaIda.get(i);
-			comboBoxHoraIda.addItem(x);
-		}
 		
 		JLabel lblFechaVuelta = new JLabel("FECHA VUELTA:");
 		lblFechaVuelta.setBounds(10, 133, 99, 20);
 		panel.add(lblFechaVuelta);
 		
 		JLabel lblHoraVuelta = new JLabel("HORA VUELTA:");
-		lblHoraVuelta.setBounds(242, 136, 97, 14);
+		lblHoraVuelta.setBounds(254, 136, 85, 14);
 		panel.add(lblHoraVuelta);
 		
-		JComboBox comboBoxHoraVuelta = new JComboBox();
+		comboBoxHoraVuelta = new JComboBox();
 		comboBoxHoraVuelta.setToolTipText("");
 		comboBoxHoraVuelta.setMaximumRowCount(2);
 		comboBoxHoraVuelta.setBounds(349, 132, 127, 22);
@@ -174,24 +211,15 @@ public class Fechas extends JFrame {
 		btnRegresar.setBounds(208, 268, 117, 34);
 		panel.add(btnRegresar);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(95, 91, 117, 20);
-		panel.add(dateChooser);
+		dateChooserIda = new JDateChooser();
+		dateChooserIda.setBounds(95, 91, 117, 20);
+		panel.add(dateChooserIda);
 		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(95, 133, 117, 20);
-		panel.add(dateChooser_1);
-		
+		dateChooserVuelta = new JDateChooser();
+		dateChooserVuelta.setBounds(95, 133, 117, 20);
+		panel.add(dateChooserVuelta);
 	
-		ArrayList<String> horaVuelta = new ArrayList<String>();
-		horaVuelta.add("10:30");
-		horaVuelta.add("12:30");
-		horaVuelta.add("14:30");
 		
-		for(int i=0; i < horaVuelta.size() ; i++) {
-			String x = horaVuelta.get(i);
-			comboBoxHoraVuelta.addItem(x);
-		}
 	
 	}
 }

@@ -3,7 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import modelo.Lineas;
+import modelo.Paradas;
+import modelo.ParadasBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -13,13 +16,19 @@ import vista.Trayecto;
 public class ControladorFechas implements ActionListener{
 	
 	private Fechas ventanFechas;
-	
+
+
 	
 	public ControladorFechas(Fechas pFechas) {
 		
 		this.ventanFechas=pFechas;
 	
+	
+	
+		
 		inicializarControlador();
+		
+		
 	}
 	
 	public void inicializarControlador() {
@@ -77,8 +86,8 @@ public class ControladorFechas implements ActionListener{
 			break;
 			
 		}
-		
+
 	}
-	
+
 
 }

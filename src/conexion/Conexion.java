@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import controlador.ControladorConexion;
 
+
 public class Conexion {
-	
 	
 	
 	public static Connection conectar() {

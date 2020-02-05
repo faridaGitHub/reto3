@@ -39,6 +39,7 @@ public class Billete extends JFrame {
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JComboBox comboBoxLinea;
+	private JComboBox comboBoxTipo;
 	
 
 	// get-set
@@ -113,9 +114,6 @@ public class Billete extends JFrame {
 		panel.add(lblOrigen);
 
 		comboBoxLinea = new JComboBox<>();
-		
-		
-		
 		comboBoxLinea.setBounds(40, 125, 162, 22);
 		panel.add(comboBoxLinea);
 
@@ -131,10 +129,10 @@ public class Billete extends JFrame {
 		btnSalir.setBounds(329, 197, 141, 48);
 		panel.add(btnSalir);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"IDA", "VUELTA"}));
-		comboBox.setBounds(365, 125, 84, 22);
-		panel.add(comboBox);
+		comboBoxTipo = new JComboBox();
+		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"IDA", "IDA-VUELTA"}));
+		comboBoxTipo.setBounds(365, 125, 84, 22);
+		panel.add(comboBoxTipo);
 		
 		JLabel lblTipoBillete = new JLabel("TIPO BILLETE");
 		lblTipoBillete.setFont(new Font("Lucida Sans", Font.BOLD, 20));
