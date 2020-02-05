@@ -24,7 +24,6 @@ public class ParadasBD {
 		
 		Connection con= Conexion.conectar();
 		
-		
 		String sql="select Nombre from Parada INNER JOIN linea_parada ON parada.Cod_Parada = linea_parada.Cod_Parada where linea_parada.cod_linea='"+cod_Linea+"';";
 		
 		PreparedStatement ps=con.prepareStatement(sql);

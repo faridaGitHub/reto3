@@ -67,7 +67,7 @@ public class ControladorTrayecto implements ActionListener{
 				Fechas ventanaFechas = new Fechas();
 				ventanaFechas.setVisible(true);
 				
-				ControladorFechas controladorFechas = new ControladorFechas(ventanaFechas);
+				ControladorFechas controladorFechas = new ControladorFechas(ventanaFechas, ventanaBillete);
 				
 				ventanaTrayecto.dispose();
 				
@@ -129,7 +129,7 @@ public class ControladorTrayecto implements ActionListener{
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("error metodo comoParada");
 			e.printStackTrace();
 		}
 

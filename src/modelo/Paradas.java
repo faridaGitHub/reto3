@@ -6,6 +6,7 @@ public class Paradas {
 	private String calle;
 	private String nombre;
 	private String coordenadas;
+
 	
 	public Paradas() {
 		super();
@@ -17,10 +18,23 @@ public class Paradas {
 		this.calle = calle;
 		this.nombre = nombre;
 		this.coordenadas = coordenadas;
+		
 	}
 
+	//get-set
+	
+	
+	
 	public String getCodparada() {
 		return cod_parada;
+	}
+
+	public String getCod_parada() {
+		return cod_parada;
+	}
+
+	public void setCod_parada(String cod_parada) {
+		this.cod_parada = cod_parada;
 	}
 
 	public void setCodparada(String cod_parada) {

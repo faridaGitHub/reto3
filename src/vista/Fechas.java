@@ -12,7 +12,10 @@ import javax.swing.JTextField;
 import controlador.ControladorFechas;
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JEditorPane;
 import javax.swing.JList;
@@ -20,7 +23,10 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.LineBorder;
 import com.toedter.calendar.JMonthChooser;
+import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.components.JLocaleChooser;
+import com.toedter.calendar.JDayChooser;
 
 public class Fechas extends JFrame {
 
@@ -31,15 +37,15 @@ public class Fechas extends JFrame {
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
-	
-	private String fecha;
-	private String Hora;
-	
+
 	private JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
 	
 	private JDateChooser dateChooserIda;
 	private JDateChooser dateChooserVuelta;
+	
+	
+
 
 	//get-set
 	
@@ -61,21 +67,6 @@ public class Fechas extends JFrame {
 
 	public void setDateChooserVuelta(JDateChooser dateChooserVuelta) {
 		this.dateChooserVuelta = dateChooserVuelta;
-	}
-
-	public String getHora() {
-		return Hora;
-	}
-
-	public void setfecha(String fecha) {
-		Hora = fecha;
-	}
-	public String getfecha() {
-		return fecha;
-	}
-
-	public void setHora(String hora) {
-		Hora = hora;
 	}
 
 	public JComboBox getComboBoxHoraIda() {
@@ -131,7 +122,9 @@ public class Fechas extends JFrame {
 			Fechas ventanaFechas = new Fechas();
 			ventanaFechas.setVisible(true);
 			
-			ControladorFechas ControladorFechas = new ControladorFechas(ventanaFechas);
+			Billete ventanaBillete = new Billete();
+			
+			ControladorFechas ControladorFechas = new ControladorFechas(ventanaFechas, ventanaBillete);
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,6 +132,7 @@ public class Fechas extends JFrame {
 	}
 
 
+	@SuppressWarnings("deprecation")
 	public Fechas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 569, 377);
@@ -214,10 +208,11 @@ public class Fechas extends JFrame {
 		dateChooserIda = new JDateChooser();
 		dateChooserIda.setBounds(95, 91, 117, 20);
 		panel.add(dateChooserIda);
-		
+
 		dateChooserVuelta = new JDateChooser();
-		dateChooserVuelta.setBounds(95, 133, 117, 20);
+		dateChooserVuelta.setBounds(106, 133, 117, 20);
 		panel.add(dateChooserVuelta);
+		
 	
 		
 	
