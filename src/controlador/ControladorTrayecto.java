@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import modelo.Lineas;
 import modelo.LineasBD;
-import modelo.Paradas;
-import modelo.ParadasBD;
+import modelo.Parada;
+import modelo.ParadaBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -111,20 +111,20 @@ public class ControladorTrayecto implements ActionListener{
 	private void rellenarComboParadas() {
 		
 	
-		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
+		ArrayList<Parada> parada = new ArrayList<Parada>();
 		
 		Lineas miLinea = (Lineas) this.ventanaBillete.getcomboBoxLinea().getSelectedItem();
 		 
 
 		try {
 			
-			paradas = ParadasBD.obtenerParadas(miLinea.getCodlinea());
+			parada = ParadaBD.obtenerParadas(miLinea.getCodlinea());
 
-			for (int i = 0; i < paradas.size(); i++) {
+			for (int i = 0; i < parada.size(); i++) {
 
-				this.ventanaTrayecto.getComboBoxDestino().addItem(paradas.get(i));
+				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
 				
-				this.ventanaTrayecto.getComboBoxOrigen().addItem(paradas.get(i));
+				this.ventanaTrayecto.getComboBoxOrigen().addItem(parada.get(i));
 
 			}
 

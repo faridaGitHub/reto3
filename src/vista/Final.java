@@ -22,6 +22,7 @@ public class Final extends JFrame {
 	private JTextField textFieldFecha;
 	private JTextField textFieldHora;
 	private JPanel fondo;
+	private JTextField textField;
 
 	// set-get
 	public JTextField getTextFieldNombre() {
@@ -87,7 +88,7 @@ public class Final extends JFrame {
 
 	public Final() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 350);
+		setBounds(100, 100, 450, 398);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -116,7 +117,7 @@ public class Final extends JFrame {
 			}
 		});
 		fondo.setBackground(Color.WHITE);
-		fondo.setBounds(21, 11, 387, 289);
+		fondo.setBounds(21, 11, 387, 337);
 		contentPane.add(fondo);
 		fondo.setLayout(null);
 
@@ -159,6 +160,11 @@ public class Final extends JFrame {
 		lblHora.setFont(new Font("Arial", Font.BOLD, 15));
 		lblHora.setBounds(20, 257, 74, 18);
 		fondo.add(lblHora);
+		
+		JLabel lblPrecio = new JLabel("PRECIO");
+		lblPrecio.setFont(new Font("Arial", Font.BOLD, 15));
+		lblPrecio.setBounds(20, 286, 74, 18);
+		fondo.add(lblPrecio);
 
 		textFieldNombre = new JTextField();
 		textFieldNombre.setEditable(false);
@@ -189,5 +195,13 @@ public class Final extends JFrame {
 		textFieldHora.setColumns(10);
 		textFieldHora.setBounds(127, 257, 193, 20);
 		fondo.add(textFieldHora);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBounds(127, 286, 193, 20);
+		fondo.add(textField);
+		
+		
 	}
 }

@@ -13,7 +13,7 @@ import controlador.ControladorBillete;
 import modelo.ClienteBD;
 import modelo.Lineas;
 import modelo.LineasBD;
-import modelo.Paradas;
+import modelo.Parada;
 
 import java.awt.Color;
 import javax.swing.JLabel;

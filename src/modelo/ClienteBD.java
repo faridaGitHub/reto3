@@ -45,23 +45,21 @@ public class ClienteBD {
 		return registrar;
 	}
 
-	public boolean mBuscarContacto(String dni, String contrasena)  {
-
+	public boolean mBuscarContacto(String dni, String contrasena) {
 
 		boolean existeUsuario = false;
 
 		try {
-			
-			Connection con= Conexion.conectar();
-			
-			String sql="SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
-			PreparedStatement ps=con.prepareStatement(sql);
+
+			Connection con = Conexion.conectar();
+
+			String sql = "SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, dni);
 			ps.setString(2, contrasena);
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
-		
 			while (rs.next()) {
 				existeUsuario = true;
 			}
@@ -69,19 +67,53 @@ public class ClienteBD {
 			ps.close();
 			rs.close();
 			con.close();
-			
 
 		} catch (SQLException e) {
-			
+
 			System.out.println("Error: Clase Contacto, método buscar");
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
 
 		return existeUsuario;
 	}
 
-	
-	
-	
+	public Cliente mObtenerCliente(String dni, String contrasena) {
+
+		Cliente cliente = new Cliente();
+
+		try {
+
+			Connection con = Conexion.conectar();
+
+			String sql = "SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setString(1, dni);
+			ps.setString(2, contrasena);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				cliente.setDni(rs.getString("DNI"));
+				cliente.setNombre(rs.getString("Nombre"));
+				cliente.setApellidos(rs.getString("Apellidos"));
+				cliente.setContraseña(rs.getString("Contraseña"));
+				cliente.setFechaNaci(rs.getString("Fecha_Nac"));
+				cliente.setSexo(rs.getString("Sexo"));
+
+			}
+
+			ps.close();
+			rs.close();
+			con.close();
+
+		} catch (SQLException e) {
+
+			System.out.println("Error: Clase Contacto, método buscar");
+			e.printStackTrace();
+		}
+
+		return cliente;
+
+	}
 
 }

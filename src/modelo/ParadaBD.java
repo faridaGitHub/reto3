@@ -7,20 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import conexion.Conexion;
 
-public class ParadasBD {
+public class ParadaBD {
 	
 	
-	private  ArrayList<Paradas> listaParadas;
+	private  ArrayList<Parada> listaParadas;
 
 
 	
-	public ParadasBD() {
+	public ParadaBD() {
 		
 	}
 
 	
 	
-	public static ArrayList<Paradas> obtenerParadas(String cod_Linea) throws SQLException{
+	public static ArrayList<Parada> obtenerParadas(String cod_Linea) throws SQLException{
 		
 		Connection con= Conexion.conectar();
 		
@@ -32,7 +32,7 @@ public class ParadasBD {
 		ResultSet rs=ps.executeQuery();
 		
 
-		ArrayList<Paradas> paradas= new ArrayList<Paradas>();
+		ArrayList<Parada> parada= new ArrayList<Parada>();
 		
 		try {
 			
@@ -40,11 +40,11 @@ public class ParadasBD {
 		
 			while (rs.next()) {
 				
-				Paradas miParada = new Paradas();
+				Parada miParada = new Parada();
 				
 				miParada.setNombre(rs.getString("Nombre"));
 				
-				paradas.add(miParada);
+				parada.add(miParada);
 			
 			}
 
@@ -59,19 +59,19 @@ public class ParadasBD {
 			
 		}
 		
-		return paradas ;
+		return parada ;
 		
 	}
 
 
 
-	public ArrayList<Paradas> getListaLineas() {
+	public ArrayList<Parada> getListaLineas() {
 		return listaParadas;
 	}
 
 
 
-	public void setListaLineas(ArrayList<Paradas> listaParadas) {
+	public void setListaLineas(ArrayList<Parada> listaParadas) {
 		this.listaParadas = listaParadas;
 	}
 	

@@ -19,6 +19,10 @@ import vista.Inicio;
 import vista.Registro;
 
 public class ControladorEntrar implements ActionListener {
+	
+	public static String dni;
+	public static String contrasena;
+	
 
 	private Entrar ventanaEntrar;
 
@@ -78,6 +82,11 @@ public class ControladorEntrar implements ActionListener {
 
 		String dni = this.ventanaEntrar.getTextFieldDni().getText();
 		String contrasena = this.ventanaEntrar.getPasswordField().getText();
+		
+		
+		ControladorEntrar.dni = this.ventanaEntrar.getTextFieldDni().getText();
+		ControladorEntrar.contrasena = this.ventanaEntrar.getPasswordField().getText();
+		
 
 		ClienteBD clienteBD = new ClienteBD();
 

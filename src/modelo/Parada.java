@@ -1,17 +1,17 @@
 package modelo;
 
-public class Paradas {
+public class Parada {
 	
 	private String cod_parada;
 	private String calle;
 	private String nombre;
 	private String coordenadas;
 	
-	public Paradas() {
+	public Parada() {
 		super();
 	}
 
-	public Paradas(String cod_parada, String calle, String nombre, String coordenadas) {
+	public Parada(String cod_parada, String calle, String nombre, String coordenadas) {
 		super();
 		this.cod_parada = cod_parada;
 		this.calle = calle;
