@@ -21,7 +21,7 @@ public class ControladorFechas implements ActionListener {
 	private Fechas ventanFechas;
 	private Billete ventanaBillete;
 
-	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) {
+	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) throws SQLException {
 
 		this.ventanFechas = pFechas;
 		this.ventanaBillete = pVentanBillete;
@@ -29,7 +29,8 @@ public class ControladorFechas implements ActionListener {
 		inicializarControlador();
 
 		rellenarComboHora();
-
+		
+		tipoBillete();
 	}
 
 	public void inicializarControlador() {
@@ -118,6 +119,27 @@ public class ControladorFechas implements ActionListener {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void tipoBillete() throws SQLException {
+		
+	
+		String tipo = this.ventanaBillete.getComboBoxTipo().getSelectedItem().toString();
+		
+		
+		if(tipo.equalsIgnoreCase("Ida")) {
+			
+			ventanFechas.getDateChooserVuelta().setEnabled(false);
+			ventanFechas.getComboBoxHoraVuelta().setEnabled(false);
+			
+		}else {
+			
+			ventanFechas.getDateChooserVuelta().setEnabled(true);
+			ventanFechas.getComboBoxHoraVuelta().setEnabled(true);
+		}
+			
+		
+		
 	}
 
 }

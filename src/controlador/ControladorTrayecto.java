@@ -67,7 +67,12 @@ public class ControladorTrayecto implements ActionListener{
 				Fechas ventanaFechas = new Fechas();
 				ventanaFechas.setVisible(true);
 				
+			try {
 				ControladorFechas controladorFechas = new ControladorFechas(ventanaFechas, ventanaBillete);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 				
 				ventanaTrayecto.dispose();
 				
