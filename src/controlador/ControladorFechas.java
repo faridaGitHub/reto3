@@ -4,90 +4,139 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import modelo.Hora;
+import modelo.HoraBD;
 import modelo.Lineas;
-import modelo.Parada;
-import modelo.ParadaBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
 import vista.Pagar;
-import vista.Trayecto;
 
-public class ControladorFechas implements ActionListener{
-	
+public class ControladorFechas implements ActionListener {
+
 	private Fechas ventanFechas;
+	private Billete ventanaBillete;
 
+	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) throws SQLException {
 
-	
-	public ControladorFechas(Fechas pFechas) {
-		
-		this.ventanFechas=pFechas;
-	
-	
-	
-		
+		this.ventanFechas = pFechas;
+		this.ventanaBillete = pVentanBillete;
+
 		inicializarControlador();
+
+		rellenarComboHora();
 		
-		
+		tipoBillete();
 	}
-	
+
 	public void inicializarControlador() {
-		
-		
+
 		this.ventanFechas.getBtnContinuar().addActionListener(this);
 		this.ventanFechas.getBtnContinuar().setActionCommand("btnContinuar");
-		
+
 		this.ventanFechas.getBtnSalir().addActionListener(this);
 		this.ventanFechas.getBtnSalir().setActionCommand("btnSalir");
-		
+
 		this.ventanFechas.getBtnRegresar().addActionListener(this);
 		this.ventanFechas.getBtnRegresar().setActionCommand("BtnRegresar");
-		
+
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
-		
+
 		switch (e.getActionCommand()) {
+		
 		case "btnContinuar":
-			
+
 			Pagar ventanaPagar = new Pagar();
 			ventanaPagar.setVisible(true);
-			
+
 			ventanFechas.dispose();
-			
+
 			break;
 
 		case "btnSalir":
-			
+
 			Inicio ventanaInicio = new Inicio();
 			ventanaInicio.setVisible(true);
-			
+
 			ControladorInicio controladorInicio = new ControladorInicio(ventanaInicio);
-			
+
 			ventanFechas.dispose();
-			
+
 			break;
-			
+
 		case "BtnRegresar":
+
+			Billete ventanaBillete = null;
 			
-			Billete ventanaBillete=null;
 			try {
+				
 				ventanaBillete = new Billete();
+				
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
-			ventanaBillete.setVisible(true);
 			
+			ventanaBillete.setVisible(true);
+
 			ControladorBillete controladorBillete = new ControladorBillete(ventanaBillete);
 
 			ventanFechas.dispose();
 
 			break;
-			
+
 		}
 
 	}
 
+	private void rellenarComboHora() {
+
+		
+		ArrayList<Hora> Hora = new ArrayList<Hora>();
+
+		Lineas miLinea = (Lineas) this.ventanaBillete.getcomboBoxLinea().getSelectedItem();
+
+		try {
+
+			Hora = HoraBD.obtenerHora(miLinea.getCodlinea());
+
+			for (int i = 0; i < Hora.size(); i++) {
+
+				this.ventanFechas.getComboBoxHoraIda().addItem(Hora.get(i));
+				
+				this.ventanFechas.getComboBoxHoraVuelta().addItem(Hora.get(i));
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println("error metodo comboHora");
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void tipoBillete() throws SQLException {
+		
+	
+		String tipo = this.ventanaBillete.getComboBoxTipo().getSelectedItem().toString();
+		
+		
+		if(tipo.equalsIgnoreCase("Ida")) {
+			
+			ventanFechas.getDateChooserVuelta().setEnabled(false);
+			ventanFechas.getComboBoxHoraVuelta().setEnabled(false);
+			
+		}else {
+			
+			ventanFechas.getDateChooserVuelta().setEnabled(true);
+			ventanFechas.getComboBoxHoraVuelta().setEnabled(true);
+		}
+			
+		
+		
+	}
 
 }

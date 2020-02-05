@@ -6,6 +6,8 @@ public class Autobuses {
 	private int num_plazas;
 	private int consumo_km;
 	private String color;
+	private String fecha;
+	private String Hora;
 	
 	public Autobuses() {
 		super();
@@ -33,6 +35,22 @@ public class Autobuses {
 
 	public void setNum_plazas(int num_plazas) {
 		this.num_plazas = num_plazas;
+	}
+
+	public String getHora() {
+		return Hora;
+	}
+
+	public void setHora(String hora) {
+		Hora = hora;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public int getConsumo_km() {

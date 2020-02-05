@@ -43,8 +43,26 @@ public class Billete extends JFrame {
 	
 
 	// get-set
+	
+	
 	public JComboBox getcomboBoxLinea() {
 		return comboBoxLinea;
+	}
+
+	public JComboBox getComboBoxLinea() {
+		return comboBoxLinea;
+	}
+
+	public void setComboBoxLinea(JComboBox comboBoxLinea) {
+		this.comboBoxLinea = comboBoxLinea;
+	}
+
+	public JComboBox getComboBoxTipo() {
+		return comboBoxTipo;
+	}
+
+	public void setComboBoxTipo(JComboBox comboBoxTipo) {
+		this.comboBoxTipo = comboBoxTipo;
 	}
 
 	public void setcomboBoxLinea(JComboBox comboBoxLinea) {

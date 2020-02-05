@@ -6,9 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Lineas;
-import modelo.LineasBD;
 import modelo.Parada;
-import modelo.ParadaBD;
+import modelo.ParadasBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -67,7 +66,12 @@ public class ControladorTrayecto implements ActionListener{
 				Fechas ventanaFechas = new Fechas();
 				ventanaFechas.setVisible(true);
 				
-				ControladorFechas controladorFechas = new ControladorFechas(ventanaFechas);
+			try {
+				ControladorFechas controladorFechas = new ControladorFechas(ventanaFechas, ventanaBillete);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 				
 				ventanaTrayecto.dispose();
 				
@@ -118,7 +122,7 @@ public class ControladorTrayecto implements ActionListener{
 
 		try {
 			
-			parada = ParadaBD.obtenerParadas(miLinea.getCodlinea());
+			parada = ParadasBD.obtenerParadas(miLinea.getCodlinea());
 
 			for (int i = 0; i < parada.size(); i++) {
 
@@ -129,7 +133,7 @@ public class ControladorTrayecto implements ActionListener{
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("error metodo comoParada");
 			e.printStackTrace();
 		}
 

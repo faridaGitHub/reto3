@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import conexion.Conexion;
 
-public class ParadaBD {
+public class ParadasBD {
 	
 	
 	private  ArrayList<Parada> listaParadas;
 
 
 	
-	public ParadaBD() {
+	public ParadasBD() {
 		
 	}
 
@@ -24,7 +24,6 @@ public class ParadaBD {
 		
 		Connection con= Conexion.conectar();
 		
-		
 		String sql="select Nombre from Parada INNER JOIN linea_parada ON parada.Cod_Parada = linea_parada.Cod_Parada where linea_parada.cod_linea='"+cod_Linea+"';";
 		
 		PreparedStatement ps=con.prepareStatement(sql);
@@ -32,7 +31,7 @@ public class ParadaBD {
 		ResultSet rs=ps.executeQuery();
 		
 
-		ArrayList<Parada> parada= new ArrayList<Parada>();
+		ArrayList<Parada> paradas= new ArrayList<Parada>();
 		
 		try {
 			
@@ -44,7 +43,7 @@ public class ParadaBD {
 				
 				miParada.setNombre(rs.getString("Nombre"));
 				
-				parada.add(miParada);
+				paradas.add(miParada);
 			
 			}
 
@@ -59,7 +58,7 @@ public class ParadaBD {
 			
 		}
 		
-		return parada ;
+		return paradas ;
 		
 	}
 
