@@ -126,8 +126,11 @@ public class ControladorFechas implements ActionListener {
 		
 		if(tipo.equalsIgnoreCase("Ida")) {
 			
-			ventanFechas.getDateChooserVuelta().setEnabled(false);
-			ventanFechas.getComboBoxHoraVuelta().setEnabled(false);
+			
+			ventanFechas.getDateChooserVuelta().setVisible(false);
+			ventanFechas.getComboBoxHoraVuelta().setVisible(false);
+			ventanFechas.getLblFechaVuelta().setVisible(false);
+			ventanFechas.getLblHoraVuelta().setVisible(false);
 			
 		}else {
 			

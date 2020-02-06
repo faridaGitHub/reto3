@@ -1,32 +1,22 @@
 package vista;
 
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import controlador.ControladorFechas;
-import javax.swing.border.BevelBorder;
-import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.awt.event.ActionEvent;
-import javax.swing.JEditorPane;
-import javax.swing.JList;
-import javax.swing.JComboBox;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import com.toedter.calendar.JMonthChooser;
-import com.toedter.calendar.JCalendar;
+
 import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JLocaleChooser;
-import com.toedter.calendar.JDayChooser;
+
+import controlador.ControladorFechas;
 
 public class Fechas extends JFrame {
 
@@ -44,13 +34,30 @@ public class Fechas extends JFrame {
 	private JDateChooser dateChooserIda;
 	private JDateChooser dateChooserVuelta;
 	
+	private JLabel lblFechaVuelta;
+	private JLabel lblHoraVuelta;
 	
-
 
 	//get-set
 	
 	public JButton getBtnContinuar() {
 		return btnContinuar;
+	}
+
+	public JLabel getLblFechaVuelta() {
+		return lblFechaVuelta;
+	}
+
+	public void setLblFechaVuelta(JLabel lblFechaVuelta) {
+		this.lblFechaVuelta = lblFechaVuelta;
+	}
+
+	public JLabel getLblHoraVuelta() {
+		return lblHoraVuelta;
+	}
+
+	public void setLblHoraVuelta(JLabel lblHoraVuelta) {
+		this.lblHoraVuelta = lblHoraVuelta;
 	}
 
 	public JDateChooser getDateChooserIda() {
@@ -187,12 +194,12 @@ public class Fechas extends JFrame {
 		comboBoxHoraIda.setBounds(349, 87, 127, 22);
 		panel.add(comboBoxHoraIda);
 		
-		JLabel lblFechaVuelta = new JLabel("FECHA VUELTA:");
+		lblFechaVuelta = new JLabel("FECHA VUELTA:");
 		lblFechaVuelta.setBounds(10, 133, 99, 20);
 		panel.add(lblFechaVuelta);
 		
-		JLabel lblHoraVuelta = new JLabel("HORA VUELTA:");
-		lblHoraVuelta.setBounds(280, 136, 85, 14);
+		lblHoraVuelta = new JLabel("HORA VUELTA:");
+		lblHoraVuelta.setBounds(254, 136, 122, 14);
 		panel.add(lblHoraVuelta);
 		
 		comboBoxHoraVuelta = new JComboBox();

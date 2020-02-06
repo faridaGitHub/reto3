@@ -8,7 +8,7 @@ public class Hora {
 	public Hora() {
 		
 	}
-	
+	//get-set
 	public Hora( String pHora) {
 		
 		this.Hora= pHora;
@@ -22,6 +22,7 @@ public class Hora {
 		Hora = hora;
 	}
 	
+	//otros
 	public String toString() {
 		
 		return this.Hora;
