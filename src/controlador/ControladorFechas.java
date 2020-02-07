@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
@@ -40,6 +39,7 @@ public class ControladorFechas implements ActionListener {
 
 		this.ventanFechas.getBtnRegresar().addActionListener(this);
 		this.ventanFechas.getBtnRegresar().setActionCommand("BtnRegresar");
+		
 
 	}
 
@@ -49,6 +49,7 @@ public class ControladorFechas implements ActionListener {
 		
 		case "btnContinuar":
 
+		
 			Pagar ventanaPagar = new Pagar();
 			ventanaPagar.setVisible(true);
 
@@ -136,10 +137,9 @@ public class ControladorFechas implements ActionListener {
 			
 			ventanFechas.getDateChooserVuelta().setEnabled(true);
 			ventanFechas.getComboBoxHoraVuelta().setEnabled(true);
-		}
-			
-		
+		}			
 		
 	}
+	
 
 }

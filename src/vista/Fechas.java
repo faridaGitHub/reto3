@@ -30,6 +30,7 @@ public class Fechas extends JFrame {
 
 	private JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
+	private JComboBox comboBoxCantidad;
 	
 	private JDateChooser dateChooserIda;
 	private JDateChooser dateChooserVuelta;
@@ -40,8 +41,17 @@ public class Fechas extends JFrame {
 
 	//get-set
 	
+	
 	public JButton getBtnContinuar() {
 		return btnContinuar;
+	}
+
+	public JComboBox getComboBoxCantidad() {
+		return comboBoxCantidad;
+	}
+
+	public void setComboBoxCantidad(JComboBox comboBoxCantidad) {
+		this.comboBoxCantidad = comboBoxCantidad;
 	}
 
 	public JLabel getLblFechaVuelta() {
@@ -224,7 +234,7 @@ public class Fechas extends JFrame {
 		lblCantidad.setBounds(573, 91, 74, 18);
 		panel.add(lblCantidad);
 		
-		JComboBox comboBoxCantidad = new JComboBox();
+		comboBoxCantidad = new JComboBox();
 		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
 		comboBoxCantidad.setBounds(573, 118, 63, 22);
 		panel.add(comboBoxCantidad);
