@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
@@ -27,6 +29,7 @@ public class ControladorFechas implements ActionListener {
 		rellenarComboHora();
 		
 		tipoBillete();
+		deshabilitarFechhas();
 	}
 
 	public void inicializarControlador() {
@@ -139,6 +142,11 @@ public class ControladorFechas implements ActionListener {
 			ventanFechas.getComboBoxHoraVuelta().setEnabled(true);
 		}			
 		
+	}
+	public void deshabilitarFechhas() {
+		
+		this.ventanFechas.getDateChooserIda().setMinSelectableDate(new Date());
+		this.ventanFechas.getDateChooserVuelta().setMinSelectableDate(new Date());
 	}
 	
 

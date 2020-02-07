@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorFinal;
 import controlador.ControladorInicio;
 
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public class Final extends JFrame {
 
@@ -21,12 +23,32 @@ public class Final extends JFrame {
 	private JTextField textFieldDestino;
 	private JTextField textFieldFecha;
 	private JTextField textFieldHora;
+	private JButton btnSi;
+	private JButton btnNo;
 	private JPanel fondo;
 	private JTextField textField;
+	
 
 	// set-get
+	
 	public JTextField getTextFieldNombre() {
 		return textFieldNombre;
+	}
+
+	public JButton getBtnSi() {
+		return btnSi;
+	}
+
+	public void setBtnSi(JButton btnSi) {
+		this.btnSi = btnSi;
+	}
+
+	public JButton getBtnNo() {
+		return btnNo;
+	}
+
+	public void setBtnNo(JButton btnNo) {
+		this.btnNo = btnNo;
 	}
 
 	public void setTextFieldNombre(JTextField textFieldNombre) {
@@ -45,8 +67,8 @@ public class Final extends JFrame {
 		return textFieldDestino;
 	}
 
-	public void setTextFieldDestino(JTextField textFieldDestino) {
-		this.textFieldDestino = textFieldDestino;
+	public void setTextFieldDestino(Object object) {
+		this.textFieldDestino = (JTextField) object;
 	}
 
 	public JTextField getTextFieldFecha() {
@@ -80,6 +102,8 @@ public class Final extends JFrame {
 
 			Final ventanaFinal = new Final();
 			ventanaFinal.setVisible(true);
+			
+			ControladorFinal controladorFinal = new ControladorFinal(ventanaFinal);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,36 +112,16 @@ public class Final extends JFrame {
 
 	public Final() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 398);
+		setBounds(100, 100, 450, 437);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		fondo = new JPanel();
-		fondo.addMouseMotionListener(new MouseMotionAdapter() {
-			public void mouseMoved(MouseEvent e) {
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-				try {
-
-					Inicio ventanaInicio = new Inicio();
-					ventanaInicio.setVisible(true);
-
-					ControladorInicio controladorInicio = new ControladorInicio(ventanaInicio);
-
-				} catch (Exception d) {
-					d.printStackTrace();
-				}
-				dispose();
-			}
-		});
 		fondo.setBackground(Color.WHITE);
-		fondo.setBounds(21, 11, 387, 337);
+		fondo.setBounds(10, 11, 414, 376);
 		contentPane.add(fondo);
 		fondo.setLayout(null);
 
@@ -201,6 +205,16 @@ public class Final extends JFrame {
 		textField.setColumns(10);
 		textField.setBounds(127, 286, 193, 20);
 		fondo.add(textField);
+		
+		btnSi = new JButton("SI");
+		btnSi.setFont(new Font("Arial", Font.BOLD, 15));
+		btnSi.setBounds(10, 328, 89, 37);
+		fondo.add(btnSi);
+		
+		btnNo = new JButton("NO");
+		btnNo.setFont(new Font("Arial", Font.BOLD, 15));
+		btnNo.setBounds(304, 328, 89, 37);
+		fondo.add(btnNo);
 		
 		
 	}

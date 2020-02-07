@@ -4,10 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controlador.ControladorComprobante;
+import controlador.ControladorFinal;
 import controlador.ControladorInicio;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -327,10 +325,11 @@ public  class Pagar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
-					Comprobante VentanaComprobante = new Comprobante();
-					VentanaComprobante.setVisible(true);
+					Final VentanaFinal = new Final();
+					VentanaFinal.setVisible(true);
 		
-					ControladorComprobante controladorComprobante = new ControladorComprobante(VentanaComprobante);
+					ControladorFinal controladorFinal = new ControladorFinal(VentanaFinal);
+					
 				} catch (Exception d) {
 					
 					d.printStackTrace();

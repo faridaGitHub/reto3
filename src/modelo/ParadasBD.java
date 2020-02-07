@@ -18,8 +18,7 @@ public class ParadasBD {
 		
 	}
 
-	
-	
+
 	public static ArrayList<Parada> obtenerParadas(String cod_Linea) throws SQLException{
 		
 		Connection con= Conexion.conectar();
