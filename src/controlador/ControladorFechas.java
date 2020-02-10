@@ -116,6 +116,8 @@ public class ControladorFechas implements ActionListener {
 				this.ventanFechas.getComboBoxHoraVuelta().addItem(Hora.get(i));
 
 			}
+			
+			DatosTicket.hora = ventanFechas.getComboBoxHoraIda().getSelectedItem().toString();
 
 		} catch (SQLException e) {
 			System.out.println("error metodo comboHora");

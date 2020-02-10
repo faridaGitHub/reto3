@@ -25,9 +25,9 @@ public class ControladorFinal implements ActionListener {
 
 		this.ventanaFinal = pFinal;
 		
-		llenarDatos();
+	
 		inicializarControlador();
-		
+		llenarDatos();
 	
 
 	}
@@ -104,6 +104,11 @@ public class ControladorFinal implements ActionListener {
 	String Nombre;
 	Nombre = DatosTicket.nombre.toString();
 	ventanaFinal.getTextFieldNombre().setText(DatosTicket.nombre);
+	
+	ventanaFinal.getTextFieldOrigen().setText(DatosTicket.origen);
+	
+
+	ventanaFinal.getTextFieldHora().setText(DatosTicket.hora);
 	
 
 		

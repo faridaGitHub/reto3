@@ -106,9 +106,8 @@ public class ControladorTrayecto implements ActionListener{
 			
 		}
 
-
-
 	
+	@SuppressWarnings("unchecked")
 	private void rellenarComboParadas() {
 		
 	
@@ -123,10 +122,13 @@ public class ControladorTrayecto implements ActionListener{
 
 			for (int i = 0; i < parada.size(); i++) {
 
-				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
-				
 				this.ventanaTrayecto.getComboBoxOrigen().addItem(parada.get(i));
+
+			}
+			
+			for (int i = 0; i < parada.size(); i++) {
 				
+				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
 
 			}
 			
@@ -136,6 +138,14 @@ public class ControladorTrayecto implements ActionListener{
 			System.out.println("error metodo comoParada");
 			e.printStackTrace();
 		}
+		
+		
+		DatosTicket.origen= this.ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
+		
+		DatosTicket.destino = this.ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
+		
+		
+
 
 	}
 	

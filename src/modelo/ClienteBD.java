@@ -41,7 +41,6 @@ public class ClienteBD {
 
 			System.out.println("Error: Clase Contacto, método insertar");
 
-			e.printStackTrace();
 		}
 		return registrar;
 	}
@@ -65,6 +64,7 @@ public class ClienteBD {
 				
 				
 				DatosTicket.nombre = rs.getString("Nombre");
+				
 				
 				existeUsuario = true;
 			}
