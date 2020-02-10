@@ -24,7 +24,7 @@ public class ControladorInicio implements ActionListener{
 
 	public void inicializarControlador() {
 		
-		//llama la ventana inicio llama el boton entrar aplica la funcion al presionar el boton
+	
 		this.ventanaInico.getBtnEntrar().addActionListener(this);
 		this.ventanaInico.getBtnEntrar().setActionCommand("btnEntrar");
 		
@@ -33,7 +33,7 @@ public class ControladorInicio implements ActionListener{
 
 	}
 	
-	//metodo donde se aplica la funcion asiganada al boton
+	
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
@@ -41,12 +41,12 @@ public class ControladorInicio implements ActionListener{
 		
 		case "btnEntrar":
 			
-			//llama la venta entrar 
+		
 			Entrar ventanaEntrar = new Entrar();
 			ventanaEntrar.setVisible(true);
 			
 			ControladorEntrar controladorEntrar = new ControladorEntrar(ventanaEntrar);
-			//cierra la ventana inicio
+			
 			ventanaInico.dispose();
 			
 			break;

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import datos.DatosTicket;
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
@@ -13,11 +14,13 @@ import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
 import vista.Pagar;
+import vista.Trayecto;
 
 public class ControladorFechas implements ActionListener {
 
 	private Fechas ventanFechas;
 	private Billete ventanaBillete;
+	private Trayecto ventanaTrayecto;
 
 	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) throws SQLException {
 
@@ -51,8 +54,7 @@ public class ControladorFechas implements ActionListener {
 		switch (e.getActionCommand()) {
 		
 		case "btnContinuar":
-
-		
+			
 			Pagar ventanaPagar = new Pagar();
 			ventanaPagar.setVisible(true);
 

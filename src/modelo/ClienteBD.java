@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import conexion.Conexion;
+import datos.DatosTicket;
 
 public class ClienteBD {
 
@@ -61,6 +62,10 @@ public class ClienteBD {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
+				
+				
+				DatosTicket.nombre = rs.getString("Nombre");
+				
 				existeUsuario = true;
 			}
 
