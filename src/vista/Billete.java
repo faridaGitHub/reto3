@@ -38,7 +38,7 @@ public class Billete extends JFrame {
 	private JPanel contentPane;
 	private JButton btnContinuar;
 	private JButton btnSalir;
-	private JComboBox comboBoxLinea;
+	private static JComboBox comboBoxLinea;
 	private JComboBox comboBoxTipo;
 	
 
@@ -49,7 +49,7 @@ public class Billete extends JFrame {
 		return comboBoxLinea;
 	}
 
-	public JComboBox getComboBoxLinea() {
+	public static JComboBox getComboBoxLinea() {
 		return comboBoxLinea;
 	}
 

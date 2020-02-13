@@ -9,10 +9,15 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import com.toedter.calendar.JDateChooser;
+
+
 import datos.DatosTicket;
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
+import modelo.Precio;
+import modelo.PrecioBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -28,12 +33,16 @@ public class ControladorFechas implements ActionListener {
 
 		this.ventanFechas = pFechas;
 		this.ventanaBillete = pVentanBillete;
-
 		inicializarControlador();
 		rellenarComboHora();
 		tipoBillete();
 		deshabilitarFechhas();
+
 		obtenerFecha();
+
+		pagar();
+		
+
 	}
 
 	public void inicializarControlador() {
@@ -154,6 +163,7 @@ public class ControladorFechas implements ActionListener {
 		this.ventanFechas.getDateChooserVuelta().setMinSelectableDate(new Date());
 	}
 
+
 	public String obtenerFecha() {
 
 		int dia = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -166,4 +176,12 @@ public class ControladorFechas implements ActionListener {
 
 	}
 
+
+	private void pagar() throws SQLException {
+		
+		String origen = Trayecto.getComboBoxOrigen().getSelectedItem().toString();
+		String destino = Trayecto.getComboBoxDestino().getSelectedItem().toString();
+		PrecioBD.obtenerLatLongOrigen(origen);
+		PrecioBD.obtenerLatLongDestino(destino);
+	}
 }

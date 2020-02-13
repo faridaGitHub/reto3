@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorTrayecto;
 import modelo.ClienteBD;
+import modelo.Precio;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -26,8 +27,8 @@ public class Trayecto extends JFrame {
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
-	private JComboBox comboBoxDestino;
-	private JComboBox comboBoxOrigen;
+	private static JComboBox comboBoxDestino;
+	public static JComboBox comboBoxOrigen;
 
 
 	// get-set
@@ -36,11 +37,11 @@ public class Trayecto extends JFrame {
 		return btnContinuar;
 	}
 
-	public JComboBox getComboBoxDestino() {
+	public static JComboBox getComboBoxDestino() {
 		return comboBoxDestino;
 	}
 	
-	public JComboBox getComboBoxOrigen() {
+	public static JComboBox getComboBoxOrigen() {
 		return comboBoxOrigen;
 	}
 
@@ -128,6 +129,7 @@ public class Trayecto extends JFrame {
 		comboBoxDestino.setBounds(301, 143, 153, 22);
 		panel.add(comboBoxDestino);
 
+
 		btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.setBounds(10, 237, 108, 31);
 		panel.add(btnContinuar);
@@ -143,6 +145,8 @@ public class Trayecto extends JFrame {
 		comboBoxOrigen = new JComboBox();
 		comboBoxOrigen.setBounds(24, 143, 153, 22);
 		panel.add(comboBoxOrigen);
+		
+
 
 	}
 }

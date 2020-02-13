@@ -24,16 +24,18 @@ import datos.DatosTicket;
 public class Fechas extends JFrame {
 
 	private JPanel contentPane;
-
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
 
-	private JComboBox comboBoxHoraIda;
+	private static JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
 	private JComboBox comboBoxCantidad;
 
-	private JDateChooser dateChooserIda;
+
+	
+	private static JDateChooser dateChooserIda;
+
 	private JDateChooser dateChooserVuelta;
 
 	private JLabel lblFechaVuelta;
@@ -69,7 +71,7 @@ public class Fechas extends JFrame {
 		this.lblHoraVuelta = lblHoraVuelta;
 	}
 
-	public JDateChooser getDateChooserIda() {
+	public static JDateChooser getDateChooserIda() {
 		return dateChooserIda;
 	}
 
@@ -85,7 +87,7 @@ public class Fechas extends JFrame {
 		this.dateChooserVuelta = dateChooserVuelta;
 	}
 
-	public JComboBox getComboBoxHoraIda() {
+	public static JComboBox getComboBoxHoraIda() {
 		return comboBoxHoraIda;
 	}
 
@@ -173,31 +175,42 @@ public class Fechas extends JFrame {
 		panel.add(btnSalir);
 
 		JLabel lblFecha = new JLabel("FECHA IDA:");
-		lblFecha.setBounds(13, 91, 83, 14);
+		lblFecha.setBounds(13, 124, 83, 14);
 		panel.add(lblFecha);
 
 		JLabel lblHora = new JLabel("HORA IDA:");
-		lblHora.setBounds(265, 91, 74, 14);
+		lblHora.setBounds(252, 124, 74, 14);
 		panel.add(lblHora);
 
 		comboBoxHoraIda = new JComboBox();
 		comboBoxHoraIda.setToolTipText("");
 		comboBoxHoraIda.setMaximumRowCount(2);
-		comboBoxHoraIda.setBounds(349, 87, 127, 22);
+		comboBoxHoraIda.setBounds(349, 118, 127, 22);
 		panel.add(comboBoxHoraIda);
 
 		lblFechaVuelta = new JLabel("FECHA VUELTA:");
+
 		lblFechaVuelta.setBounds(13, 146, 99, 20);
+
+		lblFechaVuelta.setBounds(13, 187, 99, 20);
+
 		panel.add(lblFechaVuelta);
 
 		lblHoraVuelta = new JLabel("HORA VUELTA:");
+
 		lblHoraVuelta.setBounds(257, 149, 122, 14);
+
+		lblHoraVuelta.setBounds(252, 190, 122, 14);
+
 		panel.add(lblHoraVuelta);
 
 		comboBoxHoraVuelta = new JComboBox();
 		comboBoxHoraVuelta.setToolTipText("");
 		comboBoxHoraVuelta.setMaximumRowCount(2);
 		comboBoxHoraVuelta.setBounds(378, 145, 127, 22);
+
+		comboBoxHoraVuelta.setBounds(349, 186, 127, 22);
+
 		panel.add(comboBoxHoraVuelta);
 
 		btnRegresar = new JButton("REGRESAR");
@@ -205,28 +218,44 @@ public class Fechas extends JFrame {
 		panel.add(btnRegresar);
 
 		dateChooserIda = new JDateChooser();
-		dateChooserIda.setBounds(95, 91, 117, 20);
+		dateChooserIda.setBounds(106, 118, 117, 20);
 		panel.add(dateChooserIda);
+		dateChooserIda.setDateFormatString("yyyy-MM-dd");
+
 
 		dateChooserIda.setDate(new Date());
 
 		dateChooserVuelta = new JDateChooser();
 		dateChooserVuelta.setBounds(119, 146, 117, 20);
+		dateChooserVuelta.setBounds(106, 187, 117, 20);
 		panel.add(dateChooserVuelta);
 
 		dateChooserVuelta.setDate(new Date());
 
 		JLabel lblCantidad = new JLabel("CANTIDAD");
+
 		lblCantidad.setBounds(578, 97, 74, 18);
+
+		lblCantidad.setBounds(574, 122, 74, 18);
+
 		panel.add(lblCantidad);
 
 		comboBoxCantidad = new JComboBox();
+
 		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 		comboBoxCantidad.setBounds(578, 124, 63, 22);
+
+		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
+		comboBoxCantidad.setBounds(573, 147, 63, 22);
+
 		panel.add(comboBoxCantidad);
 
 		JLabel lblX = new JLabel("X");
+
 		lblX.setBounds(567, 128, 48, 14);
+
+		lblX.setBounds(562, 151, 48, 14);
+
 		panel.add(lblX);
 
 	}
