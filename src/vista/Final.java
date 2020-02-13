@@ -121,6 +121,7 @@ public class Final extends JFrame {
 	}
 
 	public Final() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 644, 493);
 		contentPane = new JPanel();

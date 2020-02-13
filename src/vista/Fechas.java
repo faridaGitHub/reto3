@@ -147,7 +147,7 @@ public class Fechas extends JFrame {
 
 	public Fechas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 720, 317);
+		setBounds(100, 100, 720, 343);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -157,7 +157,7 @@ public class Fechas extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 11, 684, 257);
+		panel.setBounds(10, 11, 684, 282);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -167,11 +167,11 @@ public class Fechas extends JFrame {
 		panel.add(lblFechasHorarios);
 
 		btnContinuar = new JButton("CONTINUAR");
-		btnContinuar.setBounds(13, 203, 119, 34);
+		btnContinuar.setBounds(13, 237, 119, 34);
 		panel.add(btnContinuar);
 
 		btnSalir = new JButton("SALIR");
-		btnSalir.setBounds(545, 203, 119, 34);
+		btnSalir.setBounds(545, 237, 119, 34);
 		panel.add(btnSalir);
 
 		JLabel lblFecha = new JLabel("FECHA IDA:");
@@ -214,22 +214,21 @@ public class Fechas extends JFrame {
 		panel.add(comboBoxHoraVuelta);
 
 		btnRegresar = new JButton("REGRESAR");
-		btnRegresar.setBounds(265, 203, 148, 34);
+		btnRegresar.setBounds(265, 237, 148, 34);
 		panel.add(btnRegresar);
 
 		dateChooserIda = new JDateChooser();
 		dateChooserIda.setBounds(106, 118, 117, 20);
 		panel.add(dateChooserIda);
 		dateChooserIda.setDateFormatString("yyyy-MM-dd");
-
-
 		dateChooserIda.setDate(new Date());
 
+		
 		dateChooserVuelta = new JDateChooser();
 		dateChooserVuelta.setBounds(119, 146, 117, 20);
 		dateChooserVuelta.setBounds(106, 187, 117, 20);
 		panel.add(dateChooserVuelta);
-
+		dateChooserVuelta.setDateFormatString("yyyy-MM-dd");
 		dateChooserVuelta.setDate(new Date());
 
 		JLabel lblCantidad = new JLabel("CANTIDAD");

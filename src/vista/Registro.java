@@ -159,15 +159,16 @@ public class Registro extends JFrame {
 	@SuppressWarnings("unchecked")
 	public Registro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 433);
+		setBounds(100, 100, 470, 459);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 394);
+		panel.setBounds(10, 11, 434, 394);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		

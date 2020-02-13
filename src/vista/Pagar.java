@@ -92,9 +92,9 @@ public  class Pagar extends JFrame {
 		setBackground(SystemColor.menu);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 656);
+		setBounds(100, 100, 515, 656);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.menu);
+		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -340,29 +340,6 @@ public  class Pagar extends JFrame {
 		btnpagar.setBounds(385, 459, 91, 42);
 		contentPane.add(btnpagar);
 
-		
-
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Inicio ventanaInicio = new Inicio();
-					ventanaInicio.setVisible(true);
-		
-					ControladorInicio controladorInicio = new ControladorInicio(ventanaInicio);	
-					
-				} catch (Exception d) {
-					d.printStackTrace();
-				}
-				dispose();
-			}
-		});
-		btnSalir.setBounds(11, 553, 108, 42);
-		btnSalir.addMouseListener(new MouseAdapter() {
-
-		});
-		contentPane.add(btnSalir);
-
 		JButton btnContinuar = new JButton("Continuar");
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -408,6 +385,34 @@ public  class Pagar extends JFrame {
 		JLabel label_1 = new JLabel("\u20AC");
 		label_1.setBounds(117, 123, 46, 14);
 		contentPane.add(label_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(11, 11, 478, 595);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+				
+		
+				JButton btnSalir = new JButton("Salir");
+				btnSalir.setBounds(10, 542, 108, 42);
+				panel.add(btnSalir);
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							Inicio ventanaInicio = new Inicio();
+							ventanaInicio.setVisible(true);
+				
+							ControladorInicio controladorInicio = new ControladorInicio(ventanaInicio);	
+							
+						} catch (Exception d) {
+							d.printStackTrace();
+						}
+						dispose();
+					}
+				});
+				btnSalir.addMouseListener(new MouseAdapter() {
+
+				});
 	}
 
 	
@@ -432,6 +437,4 @@ public  class Pagar extends JFrame {
 		return DatosTicket.fecha;
 
 	}
-
-	
 }
