@@ -68,27 +68,11 @@ public  class Pagar extends JFrame {
 	 */
 	public Pagar() {
 		
-		String cod_Linea =Billete.getComboBoxLinea().getSelectedItem().toString();
-		Date FechaX = Fechas.getDateChooserIda().getDate();
-		String Fecha = new SimpleDateFormat("yyyy-MM-dd").format(FechaX);
-		String Hora = Fechas.getComboBoxHoraIda().getSelectedItem().toString();
-		
+		mPrecio();
 		mObetnerDatos();
 		obtenerFecha();
 		
-		try {
-			PrecioBD.obtenerConsumoPlazas(PrecioBD.obtenerAutobus(cod_Linea, Fecha, Hora));
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		double gasolina = Precio.getGasolina();
-		double N_plazas = Precio.getNum_plazas();
-		double Consumo_km = Precio.getConsumo_km();
-		double distancia = Precio.distanciaCoord(Precio.getLat1(), Precio.getLng1(), Precio.getLat2(), Precio.getLgn2());
-		double precio = gasolina * Consumo_km * distancia * 1.20 * 100 / N_plazas;
-		double precioFinal = Math.round(precio * 100) / 100d;
-		Precio.setPrecio(precioFinal);
+	
 		setBackground(SystemColor.menu);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -437,4 +421,36 @@ public  class Pagar extends JFrame {
 		return DatosTicket.fecha;
 
 	}
+
+	
+	public void mPrecio() {
+		
+		String cod_Linea =Billete.getComboBoxLinea().getSelectedItem().toString();
+		Date FechaX = Fechas.getDateChooserIda().getDate();
+		String Fecha = new SimpleDateFormat("yyyy-MM-dd").format(FechaX);
+		String Hora = Fechas.getComboBoxHoraIda().getSelectedItem().toString();
+		try {
+			PrecioBD.obtenerConsumoPlazas(PrecioBD.obtenerAutobus(cod_Linea, Fecha, Hora));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		double gasolina = Precio.getGasolina();
+		double N_plazas = Precio.getNum_plazas();
+		double Consumo_km = Precio.getConsumo_km();
+		double distancia = Precio.distanciaCoord(Precio.getLat1(), Precio.getLng1(), Precio.getLat2(), Precio.getLgn2());
+		String comboidavuelta = Billete.getComboBoxTipo().getSelectedItem().toString();
+		int idavuelta = 1;
+		if(comboidavuelta.equals("IDA-VUELTA")) {
+			idavuelta = 2;
+		}
+		int cantidad =Integer.valueOf(Fechas.getComboBoxCantidad().getSelectedItem().toString());
+		double precio = gasolina * Consumo_km * distancia * 1.20 * 100 * idavuelta * cantidad / N_plazas;
+		double precioFinal = Math.round(precio * 100) / 100d;
+		Precio.setPrecio(precioFinal);
+		
+		
+		
+	}
+
 }
