@@ -26,7 +26,7 @@ public class ControladorConexion {
 
 		try {
 
-			File fich = new File("C:\\Users\\admin1\\Desktop\\conex.txt");
+			File fich = new File("C:\\Users\\in1dm3_01\\Desktop\\conex.txt");
 
 
 			Scanner leer = new Scanner(fich);

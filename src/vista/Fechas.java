@@ -30,7 +30,7 @@ public class Fechas extends JFrame {
 
 	private static JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
-	private JComboBox comboBoxCantidad;
+	private static JComboBox comboBoxCantidad;
 
 
 	
@@ -47,7 +47,7 @@ public class Fechas extends JFrame {
 		return btnContinuar;
 	}
 
-	public JComboBox getComboBoxCantidad() {
+	public static JComboBox getComboBoxCantidad() {
 		return comboBoxCantidad;
 	}
 
