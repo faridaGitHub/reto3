@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 
 import controlador.ControladorFinal;
 import controlador.ControladorInicio;
+import datos.DatosTicket;
 import modelo.Precio;
 import modelo.PrecioBD;
 
@@ -25,12 +26,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
 
 public  class Pagar extends JFrame {
 
+	private Trayecto ventanaTrayecto;
+	private Fechas ventanaFechas;
 	private JPanel contentPane;
 	private JTextField tflApagar;
 	private JTextField tflIntroducido;
@@ -69,7 +73,9 @@ public  class Pagar extends JFrame {
 		String Fecha = new SimpleDateFormat("yyyy-MM-dd").format(FechaX);
 		String Hora = Fechas.getComboBoxHoraIda().getSelectedItem().toString();
 		
-
+		mObetnerDatos();
+		obtenerFecha();
+		
 		try {
 			PrecioBD.obtenerConsumoPlazas(PrecioBD.obtenerAutobus(cod_Linea, Fecha, Hora));
 		} catch (SQLException e1) {
@@ -113,6 +119,8 @@ public  class Pagar extends JFrame {
 		contentPane.add(tflApagar);
 		tflApagar.setColumns(1);
 		tflApagar.setText(String.valueOf(Precio.getPrecio()));
+		
+		DatosTicket.precio= tflApagar.getText();
 
 		JLabel lblDineroIntroducido = new JLabel("Dinero introducido:");
 		lblDineroIntroducido.setBounds(21, 95, 145, 14);
@@ -401,4 +409,29 @@ public  class Pagar extends JFrame {
 		label_1.setBounds(117, 123, 46, 14);
 		contentPane.add(label_1);
 	}
+
+	
+	public void mObetnerDatos() {
+		
+		DatosTicket.hora = Fechas.getComboBoxHoraIda().getSelectedItem().toString();
+		
+		DatosTicket.origen = ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
+		
+		DatosTicket.destino = ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
+		
+		
+	}
+	public String obtenerFecha() {
+
+		int dia = ventanaFechas.getDateChooserIda().getCalendar().get(Calendar.DAY_OF_MONTH);
+		int mes = ventanaFechas.getDateChooserIda().getCalendar().get(Calendar.MONTH);
+		int anio = ventanaFechas.getDateChooserIda().getCalendar().get(Calendar.YEAR);
+
+		DatosTicket.fecha = (anio + "-" + mes + "-" + dia);
+
+		return DatosTicket.fecha;
+
+	}
+
+	
 }

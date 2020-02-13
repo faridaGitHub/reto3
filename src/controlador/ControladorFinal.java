@@ -115,6 +115,8 @@ public class ControladorFinal implements ActionListener {
 	
 	ventanaFinal.getTextFieldFecha().setText(DatosTicket.fecha);
 	
+	ventanaFinal.getTextFieldPrecio().setText(DatosTicket.precio);
+	
 
 	
 	

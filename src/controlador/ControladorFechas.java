@@ -38,7 +38,7 @@ public class ControladorFechas implements ActionListener {
 		tipoBillete();
 		deshabilitarFechhas();
 
-		obtenerFecha();
+	
 
 		pagar();
 		
@@ -125,7 +125,6 @@ public class ControladorFechas implements ActionListener {
 
 			}
 
-			DatosTicket.hora = ventanFechas.getComboBoxHoraIda().getSelectedItem().toString();
 
 		} catch (SQLException e) {
 
@@ -164,18 +163,7 @@ public class ControladorFechas implements ActionListener {
 	}
 
 
-	public String obtenerFecha() {
-
-		int dia = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.DAY_OF_MONTH);
-		int mes = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.MONTH);
-		int anio = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.YEAR);
-
-		DatosTicket.fecha = (anio + "-" + mes + "-" + dia);
-
-		return DatosTicket.fecha;
-
-	}
-
+	
 
 	private void pagar() throws SQLException {
 		

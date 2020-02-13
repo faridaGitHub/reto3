@@ -27,13 +27,28 @@ public class Final extends JFrame {
 	private JButton btnSi;
 	private JButton btnNo;
 	private JPanel fondo;
-	private JTextField textField;
+	private JTextField textFieldPrecio;
 	
 
 	// set-get
 	
+	
+	
+	
 	public JTextField getTextFieldNombre() {
 		return textFieldNombre;
+	}
+
+	public JTextField getTextFieldPrecio() {
+		return textFieldPrecio;
+	}
+
+	public void setTextFieldPrecio(JTextField textFieldPrecio) {
+		this.textFieldPrecio = textFieldPrecio;
+	}
+
+	public void setTextFieldDestino(JTextField textFieldDestino) {
+		this.textFieldDestino = textFieldDestino;
 	}
 
 	public JButton getBtnSi() {
@@ -195,13 +210,12 @@ public class Final extends JFrame {
 		textFieldHora.setBounds(363, 301, 193, 32);
 		fondo.add(textFieldHora);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText("18");
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(20, 301, 193, 32);
-		fondo.add(textField);
+		textFieldPrecio = new JTextField();
+		textFieldPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPrecio.setEditable(false);
+		textFieldPrecio.setColumns(10);
+		textFieldPrecio.setBounds(20, 301, 193, 32);
+		fondo.add(textFieldPrecio);
 		
 		btnSi = new JButton("SI");
 		btnSi.setFont(new Font("Arial", Font.BOLD, 15));

@@ -120,15 +120,13 @@ public class ControladorTrayecto implements ActionListener {
 
 			}
 
-			DatosTicket.origen = ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
-
 			for (int i = 0; i < parada.size(); i++) {
 
 				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
 
 			}
 
-			DatosTicket.destino = ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
+
 
 		} catch (SQLException e) {
 			System.out.println("error metodo comoParada");
