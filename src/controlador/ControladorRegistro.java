@@ -66,7 +66,7 @@ public class ControladorRegistro implements ActionListener {
 			} catch (Exception a) {
 
 				JOptionPane.showMessageDialog(null, "error al resgistrar");
-				a.printStackTrace();
+				
 
 			}
 
@@ -142,9 +142,11 @@ public class ControladorRegistro implements ActionListener {
 
 		cliente.setContraseña(ventanaRegistro.getTextFieContraseña().getText());
 
+			
 		ClienteBD clienteBD = new ClienteBD();
 		clienteBD.mInsetarContacto(cliente);
-
+		
+	
 		return aux;
 		
 	}

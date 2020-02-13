@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import datos.DatosTicket;
 import modelo.ClienteBD;
 import vista.Billete;
 import vista.Entrar;
@@ -16,18 +18,19 @@ import vista.Trayecto;
 public class ControladorFinal implements ActionListener {
 
 	private Final ventanaFinal;
-	private Entrar ventanaEntrar;
 	private Trayecto ventanaTrayecto;
+	private ClienteBD cliente;
 
 	public ControladorFinal(Final pFinal) {
 
 		this.ventanaFinal = pFinal;
-
+		
+	
 		inicializarControlador();
+		llenarDatos();
 	
 
 	}
-	
 	
 
 	private void inicializarControlador() {
@@ -75,10 +78,11 @@ public class ControladorFinal implements ActionListener {
 		case "btnNo":
 			
 			Billete ventanaBillete=null;
+			
 			try {
 				ventanaBillete = new Billete();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 			ventanaBillete.setVisible(true);
@@ -93,6 +97,23 @@ public class ControladorFinal implements ActionListener {
 		}
 
 	}
+
+	public void llenarDatos() {
+		
+	
+	String Nombre;
+	Nombre = DatosTicket.nombre.toString();
+	ventanaFinal.getTextFieldNombre().setText(DatosTicket.nombre);
+	
+	ventanaFinal.getTextFieldOrigen().setText(DatosTicket.origen);
+	
+
+	ventanaFinal.getTextFieldHora().setText(DatosTicket.hora);
+	
+
+		
+	}
+	
 	
 	
 }

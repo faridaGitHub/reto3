@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import datos.DatosTicket;
 import modelo.Lineas;
 import modelo.PrecioBD;
 import modelo.Parada;
@@ -37,11 +38,7 @@ public class ControladorTrayecto implements ActionListener{
 		this.ventanaBillete = pVentanBillete;
 		
 		inicializarControlador();
-		
-		
 		rellenarComboParadas();
-
-		
 	}
 	
 	public void inicializarControlador() {
@@ -111,16 +108,15 @@ public class ControladorTrayecto implements ActionListener{
 			
 		}
 
-
-
 	
+	@SuppressWarnings("unchecked")
 	private void rellenarComboParadas() {
 		
 	
 		ArrayList<Parada> parada = new ArrayList<Parada>();
 		
 		Lineas miLinea = (Lineas) this.ventanaBillete.getcomboBoxLinea().getSelectedItem();
-		 
+				 
 
 		try {
 			
@@ -128,9 +124,13 @@ public class ControladorTrayecto implements ActionListener{
 
 			for (int i = 0; i < parada.size(); i++) {
 
-				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
-				
 				this.ventanaTrayecto.getComboBoxOrigen().addItem(parada.get(i));
+
+			}
+
+			for (int i = 0; i < parada.size(); i++) {
+				
+				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
 
 			}
 			
@@ -138,6 +138,14 @@ public class ControladorTrayecto implements ActionListener{
 			System.out.println("error metodo comoParada");
 			e.printStackTrace();
 		}
+		
+		
+		DatosTicket.origen= this.ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
+		
+		DatosTicket.destino = this.ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
+		
+		
+
 
 
 	}

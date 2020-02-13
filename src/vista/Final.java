@@ -87,15 +87,9 @@ public class Final extends JFrame {
 		this.textFieldHora = textFieldHora;
 	}
 
-	public JPanel getFondo() {
-		return fondo;
-	}
-
-	public void setFondo(JPanel fondo) {
-		this.fondo = fondo;
-	}
 
 	// otros metodos
+	
 	public static void mIncioFinal() {
 
 		try {
@@ -218,4 +212,10 @@ public class Final extends JFrame {
 		
 		
 	}
+
+
+
+
+
+
 }

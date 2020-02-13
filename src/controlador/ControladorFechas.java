@@ -8,6 +8,7 @@ import java.util.Date;
 
 import com.toedter.calendar.JDateChooser;
 
+import datos.DatosTicket;
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
@@ -23,6 +24,7 @@ public class ControladorFechas implements ActionListener {
 
 	private Fechas ventanFechas;
 	private Billete ventanaBillete;
+	private Trayecto ventanaTrayecto;
 
 	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) throws SQLException {
 
@@ -57,8 +59,7 @@ public class ControladorFechas implements ActionListener {
 		switch (e.getActionCommand()) {
 		
 		case "btnContinuar":
-
-		
+			
 			Pagar ventanaPagar = new Pagar();
 			ventanaPagar.setVisible(true);
 
@@ -120,6 +121,8 @@ public class ControladorFechas implements ActionListener {
 				this.ventanFechas.getComboBoxHoraVuelta().addItem(Hora.get(i));
 
 			}
+			
+			DatosTicket.hora = ventanFechas.getComboBoxHoraIda().getSelectedItem().toString();
 
 		} catch (SQLException e) {
 			System.out.println("error metodo comboHora");
