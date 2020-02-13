@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Lineas;
+import modelo.PrecioBD;
 import modelo.Parada;
 import modelo.ParadasBD;
+import modelo.Precio;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
@@ -29,7 +31,7 @@ public class ControladorTrayecto implements ActionListener{
 		
 	}
 	
-	public ControladorTrayecto(Trayecto pTrayecto, Billete pVentanBillete) {
+	public ControladorTrayecto(Trayecto pTrayecto, Billete pVentanBillete) throws SQLException {
 		
 		this.ventanaTrayecto=pTrayecto;
 		this.ventanaBillete = pVentanBillete;
@@ -38,7 +40,7 @@ public class ControladorTrayecto implements ActionListener{
 		
 		
 		rellenarComboParadas();
-		
+
 		
 	}
 	
@@ -131,13 +133,16 @@ public class ControladorTrayecto implements ActionListener{
 				this.ventanaTrayecto.getComboBoxOrigen().addItem(parada.get(i));
 
 			}
-
+			
 		} catch (SQLException e) {
 			System.out.println("error metodo comoParada");
 			e.printStackTrace();
 		}
 
+
 	}
+	
+	
 	
 
 }

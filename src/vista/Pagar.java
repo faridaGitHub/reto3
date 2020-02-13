@@ -4,8 +4,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+
 import controlador.ControladorFinal;
 import controlador.ControladorInicio;
+import modelo.Precio;
+import modelo.PrecioBD;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -17,6 +23,9 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -35,12 +44,15 @@ public  class Pagar extends JFrame {
 
 	/**
 	 * ventana para pagar los productos
+	 * @throws SQLException 
 	 */
-	public static void mInicioPagar() {
+	public static void mInicioPagar() throws SQLException {
 		
 				try {
 					Pagar ventanaPagar = new Pagar();
 					ventanaPagar.setVisible(true);
+					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,6 +63,26 @@ public  class Pagar extends JFrame {
 	 * Create the frame.
 	 */
 	public Pagar() {
+		
+		String cod_Linea =Billete.getComboBoxLinea().getSelectedItem().toString();
+		Date FechaX = Fechas.getDateChooserIda().getDate();
+		String Fecha = new SimpleDateFormat("yyyy-MM-dd").format(FechaX);
+		String Hora = Fechas.getComboBoxHoraIda().getSelectedItem().toString();
+		
+
+		try {
+			PrecioBD.obtenerConsumoPlazas(PrecioBD.obtenerAutobus(cod_Linea, Fecha, Hora));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		double gasolina = Precio.getGasolina();
+		double N_plazas = Precio.getNum_plazas();
+		double Consumo_km = Precio.getConsumo_km();
+		double distancia = Precio.distanciaCoord(Precio.getLat1(), Precio.getLng1(), Precio.getLat2(), Precio.getLgn2());
+		double precio = gasolina * Consumo_km * distancia * 1.20 * 100 / N_plazas;
+		double precioFinal = Math.round(precio * 100) / 100d;
+		Precio.setPrecio(precioFinal);
 		setBackground(SystemColor.menu);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,6 +110,7 @@ public  class Pagar extends JFrame {
 		tflApagar.setBackground(SystemColor.text);
 		contentPane.add(tflApagar);
 		tflApagar.setColumns(1);
+		tflApagar.setText(String.valueOf(Precio.getPrecio()));
 
 		JLabel lblDineroIntroducido = new JLabel("Dinero introducido:");
 		lblDineroIntroducido.setBounds(21, 95, 145, 14);

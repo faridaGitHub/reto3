@@ -22,17 +22,15 @@ public class Fechas extends JFrame {
 
 	private JPanel contentPane;
 	
-	private JTextField textFieldPrecio;
-	
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
 
-	private JComboBox comboBoxHoraIda;
+	private static JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
 	private JComboBox comboBoxCantidad;
 	
-	private JDateChooser dateChooserIda;
+	private static JDateChooser dateChooserIda;
 	private JDateChooser dateChooserVuelta;
 	
 	private JLabel lblFechaVuelta;
@@ -70,7 +68,7 @@ public class Fechas extends JFrame {
 		this.lblHoraVuelta = lblHoraVuelta;
 	}
 
-	public JDateChooser getDateChooserIda() {
+	public static JDateChooser getDateChooserIda() {
 		return dateChooserIda;
 	}
 
@@ -86,7 +84,7 @@ public class Fechas extends JFrame {
 		this.dateChooserVuelta = dateChooserVuelta;
 	}
 
-	public JComboBox getComboBoxHoraIda() {
+	public static JComboBox getComboBoxHoraIda() {
 		return comboBoxHoraIda;
 	}
 
@@ -108,14 +106,6 @@ public class Fechas extends JFrame {
 
 	public void setBtnRegresar(JButton btnRegresar) {
 		this.btnRegresar = btnRegresar;
-	}
-
-	public JTextField getTextFieldPrecio() {
-		return textFieldPrecio;
-	}
-
-	public void setTextFieldPrecio(JTextField textFieldPrecio) {
-		this.textFieldPrecio = textFieldPrecio;
 	}
 
 	public void setBtnContinuar(JButton btnContinuar) {
@@ -171,17 +161,6 @@ public class Fechas extends JFrame {
 		lblFechasHorarios.setFont(new Font("Arial", Font.BOLD, 25));
 		panel.add(lblFechasHorarios);
 		
-		JLabel lblPrecio = new JLabel("PRECIO");
-		lblPrecio.setFont(new Font("Arial", Font.BOLD, 15));
-		lblPrecio.setBounds(133, 196, 63, 14);
-		panel.add(lblPrecio);
-		
-		textFieldPrecio = new JTextField();
-		textFieldPrecio.setEditable(false);
-		textFieldPrecio.setBounds(243, 194, 96, 20);
-		panel.add(textFieldPrecio);
-		textFieldPrecio.setColumns(10);
-		
 		btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.setBounds(13, 268, 119, 34);
 		panel.add(btnContinuar);
@@ -191,31 +170,31 @@ public class Fechas extends JFrame {
 		panel.add(btnSalir);
 		
 		JLabel lblFecha = new JLabel("FECHA IDA:");
-		lblFecha.setBounds(13, 91, 83, 14);
+		lblFecha.setBounds(13, 124, 83, 14);
 		panel.add(lblFecha);
 		
 		JLabel lblHora = new JLabel("HORA IDA:");
-		lblHora.setBounds(265, 91, 74, 14);
+		lblHora.setBounds(252, 124, 74, 14);
 		panel.add(lblHora);
 		
 		comboBoxHoraIda =  new JComboBox();
 		comboBoxHoraIda.setToolTipText("");
 		comboBoxHoraIda.setMaximumRowCount(2);
-		comboBoxHoraIda.setBounds(349, 87, 127, 22);
+		comboBoxHoraIda.setBounds(349, 118, 127, 22);
 		panel.add(comboBoxHoraIda);
 		
 		lblFechaVuelta = new JLabel("FECHA VUELTA:");
-		lblFechaVuelta.setBounds(10, 133, 99, 20);
+		lblFechaVuelta.setBounds(13, 187, 99, 20);
 		panel.add(lblFechaVuelta);
 		
 		lblHoraVuelta = new JLabel("HORA VUELTA:");
-		lblHoraVuelta.setBounds(254, 136, 122, 14);
+		lblHoraVuelta.setBounds(252, 190, 122, 14);
 		panel.add(lblHoraVuelta);
 		
 		comboBoxHoraVuelta = new JComboBox();
 		comboBoxHoraVuelta.setToolTipText("");
 		comboBoxHoraVuelta.setMaximumRowCount(2);
-		comboBoxHoraVuelta.setBounds(375, 132, 127, 22);
+		comboBoxHoraVuelta.setBounds(349, 186, 127, 22);
 		panel.add(comboBoxHoraVuelta);
 		
 		btnRegresar = new JButton("REGRESAR");
@@ -223,24 +202,26 @@ public class Fechas extends JFrame {
 		panel.add(btnRegresar);
 		
 		dateChooserIda = new JDateChooser();
-		dateChooserIda.setBounds(95, 91, 117, 20);
+		dateChooserIda.setBounds(106, 118, 117, 20);
 		panel.add(dateChooserIda);
+		dateChooserIda.setDateFormatString("yyyy-MM-dd");
+
 
 		dateChooserVuelta = new JDateChooser();
-		dateChooserVuelta.setBounds(116, 133, 117, 20);
+		dateChooserVuelta.setBounds(106, 187, 117, 20);
 		panel.add(dateChooserVuelta);
 		
 		JLabel lblCantidad = new JLabel("CANTIDAD");
-		lblCantidad.setBounds(573, 91, 74, 18);
+		lblCantidad.setBounds(574, 122, 74, 18);
 		panel.add(lblCantidad);
 		
 		comboBoxCantidad = new JComboBox();
 		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
-		comboBoxCantidad.setBounds(573, 118, 63, 22);
+		comboBoxCantidad.setBounds(573, 147, 63, 22);
 		panel.add(comboBoxCantidad);
 		
 		JLabel lblX = new JLabel("X");
-		lblX.setBounds(562, 122, 48, 14);
+		lblX.setBounds(562, 151, 48, 14);
 		panel.add(lblX);
 		
 	

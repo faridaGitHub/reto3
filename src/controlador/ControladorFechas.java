@@ -6,13 +6,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.toedter.calendar.JDateChooser;
+
 import modelo.Hora;
 import modelo.HoraBD;
 import modelo.Lineas;
+import modelo.Precio;
+import modelo.PrecioBD;
 import vista.Billete;
 import vista.Fechas;
 import vista.Inicio;
 import vista.Pagar;
+import vista.Trayecto;
 
 public class ControladorFechas implements ActionListener {
 
@@ -23,13 +28,14 @@ public class ControladorFechas implements ActionListener {
 
 		this.ventanFechas = pFechas;
 		this.ventanaBillete = pVentanBillete;
-
 		inicializarControlador();
 
 		rellenarComboHora();
 		
 		tipoBillete();
 		deshabilitarFechhas();
+		pagar();
+		
 	}
 
 	public void inicializarControlador() {
@@ -148,6 +154,12 @@ public class ControladorFechas implements ActionListener {
 		this.ventanFechas.getDateChooserIda().setMinSelectableDate(new Date());
 		this.ventanFechas.getDateChooserVuelta().setMinSelectableDate(new Date());
 	}
-	
 
+	private void pagar() throws SQLException {
+		
+		String origen = Trayecto.getComboBoxOrigen().getSelectedItem().toString();
+		String destino = Trayecto.getComboBoxDestino().getSelectedItem().toString();
+		PrecioBD.obtenerLatLongOrigen(origen);
+		PrecioBD.obtenerLatLongDestino(destino);
+	}
 }

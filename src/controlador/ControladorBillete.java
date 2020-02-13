@@ -54,7 +54,12 @@ public class ControladorBillete implements ActionListener {
 
 			ventanaTrayecto.setVisible(true);
 
-			ControladorTrayecto controladorTrayecto = new ControladorTrayecto(ventanaTrayecto, this.ventanaBillete);
+			try {
+				ControladorTrayecto controladorTrayecto = new ControladorTrayecto(ventanaTrayecto, this.ventanaBillete);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			ventanaBillete.dispose();
 

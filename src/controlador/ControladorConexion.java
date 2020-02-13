@@ -25,7 +25,7 @@ public class ControladorConexion {
 	public static void consultarDatos() {
 
 		try {
-			File fich = new File("E:\\RETO 3\\m-v-c\\conex.txt");
+			File fich = new File("C:\\Users\\in1dm3_01\\Desktop\\conex.txt");
 
 			Scanner leer = new Scanner(fich);
 			while (leer.hasNextLine()) {
