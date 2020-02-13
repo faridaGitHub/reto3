@@ -1,7 +1,5 @@
 package datos;
 
-import vista.Final;
-import vista.Trayecto;
 
 public class DatosTicket {
 	

@@ -1,8 +1,11 @@
 package vista;
 
-
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -10,20 +13,18 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import com.toedter.calendar.JDateChooser;
 
 import controlador.ControladorFechas;
+import datos.DatosTicket;
 
 public class Fechas extends JFrame {
 
 	private JPanel contentPane;
-	
-	private JTextField textFieldPrecio;
-	
+
 	private JButton btnContinuar;
 	private JButton btnSalir;
 	private JButton btnRegresar;
@@ -31,17 +32,15 @@ public class Fechas extends JFrame {
 	private JComboBox comboBoxHoraIda;
 	private JComboBox comboBoxHoraVuelta;
 	private JComboBox comboBoxCantidad;
-	
+
 	private JDateChooser dateChooserIda;
 	private JDateChooser dateChooserVuelta;
-	
+
 	private JLabel lblFechaVuelta;
 	private JLabel lblHoraVuelta;
-	
 
-	//get-set
-	
-	
+	// get-set
+
 	public JButton getBtnContinuar() {
 		return btnContinuar;
 	}
@@ -110,14 +109,6 @@ public class Fechas extends JFrame {
 		this.btnRegresar = btnRegresar;
 	}
 
-	public JTextField getTextFieldPrecio() {
-		return textFieldPrecio;
-	}
-
-	public void setTextFieldPrecio(JTextField textFieldPrecio) {
-		this.textFieldPrecio = textFieldPrecio;
-	}
-
 	public void setBtnContinuar(JButton btnContinuar) {
 		this.btnContinuar = btnContinuar;
 	}
@@ -130,121 +121,114 @@ public class Fechas extends JFrame {
 		this.btnSalir = btnSalir;
 	}
 
-	
-	//otros metodos
+	@Override
+	public String toString() {
+		return "Fechas [dateChooserIda=" + dateChooserIda + "]";
+	}
+
+	// otros metodos
 	public static void mInicioFechas() {
-		
+
 		try {
-			
+
 			Fechas ventanaFechas = new Fechas();
 			ventanaFechas.setVisible(true);
-			
+
 			Billete ventanaBillete = new Billete();
-			
+
 			ControladorFechas ControladorFechas = new ControladorFechas(ventanaFechas, ventanaBillete);
-					
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-
-	
 	public Fechas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 720, 377);
+		setBounds(100, 100, 720, 317);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 11, 684, 318);
+		panel.setBounds(10, 11, 684, 257);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel lblFechasHorarios = new JLabel("FECHAS / HORARIOS");
 		lblFechasHorarios.setBounds(218, 11, 258, 30);
 		lblFechasHorarios.setFont(new Font("Arial", Font.BOLD, 25));
 		panel.add(lblFechasHorarios);
-		
-		JLabel lblPrecio = new JLabel("PRECIO");
-		lblPrecio.setFont(new Font("Arial", Font.BOLD, 15));
-		lblPrecio.setBounds(133, 196, 63, 14);
-		panel.add(lblPrecio);
-		
-		textFieldPrecio = new JTextField();
-		textFieldPrecio.setEditable(false);
-		textFieldPrecio.setBounds(243, 194, 96, 20);
-		panel.add(textFieldPrecio);
-		textFieldPrecio.setColumns(10);
-		
+
 		btnContinuar = new JButton("CONTINUAR");
-		btnContinuar.setBounds(13, 268, 119, 34);
+		btnContinuar.setBounds(13, 203, 119, 34);
 		panel.add(btnContinuar);
-		
+
 		btnSalir = new JButton("SALIR");
-		btnSalir.setBounds(545, 268, 119, 34);
+		btnSalir.setBounds(545, 203, 119, 34);
 		panel.add(btnSalir);
-		
+
 		JLabel lblFecha = new JLabel("FECHA IDA:");
 		lblFecha.setBounds(13, 91, 83, 14);
 		panel.add(lblFecha);
-		
+
 		JLabel lblHora = new JLabel("HORA IDA:");
 		lblHora.setBounds(265, 91, 74, 14);
 		panel.add(lblHora);
-		
-		comboBoxHoraIda =  new JComboBox();
+
+		comboBoxHoraIda = new JComboBox();
 		comboBoxHoraIda.setToolTipText("");
 		comboBoxHoraIda.setMaximumRowCount(2);
 		comboBoxHoraIda.setBounds(349, 87, 127, 22);
 		panel.add(comboBoxHoraIda);
-		
+
 		lblFechaVuelta = new JLabel("FECHA VUELTA:");
-		lblFechaVuelta.setBounds(10, 133, 99, 20);
+		lblFechaVuelta.setBounds(13, 146, 99, 20);
 		panel.add(lblFechaVuelta);
-		
+
 		lblHoraVuelta = new JLabel("HORA VUELTA:");
-		lblHoraVuelta.setBounds(254, 136, 122, 14);
+		lblHoraVuelta.setBounds(257, 149, 122, 14);
 		panel.add(lblHoraVuelta);
-		
+
 		comboBoxHoraVuelta = new JComboBox();
 		comboBoxHoraVuelta.setToolTipText("");
 		comboBoxHoraVuelta.setMaximumRowCount(2);
-		comboBoxHoraVuelta.setBounds(375, 132, 127, 22);
+		comboBoxHoraVuelta.setBounds(378, 145, 127, 22);
 		panel.add(comboBoxHoraVuelta);
-		
+
 		btnRegresar = new JButton("REGRESAR");
-		btnRegresar.setBounds(265, 268, 148, 34);
+		btnRegresar.setBounds(265, 203, 148, 34);
 		panel.add(btnRegresar);
-		
+
 		dateChooserIda = new JDateChooser();
 		dateChooserIda.setBounds(95, 91, 117, 20);
 		panel.add(dateChooserIda);
 
+		dateChooserIda.setDate(new Date());
+
 		dateChooserVuelta = new JDateChooser();
-		dateChooserVuelta.setBounds(116, 133, 117, 20);
+		dateChooserVuelta.setBounds(119, 146, 117, 20);
 		panel.add(dateChooserVuelta);
-		
+
+		dateChooserVuelta.setDate(new Date());
+
 		JLabel lblCantidad = new JLabel("CANTIDAD");
-		lblCantidad.setBounds(573, 91, 74, 18);
+		lblCantidad.setBounds(578, 97, 74, 18);
 		panel.add(lblCantidad);
-		
+
 		comboBoxCantidad = new JComboBox();
-		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
-		comboBoxCantidad.setBounds(573, 118, 63, 22);
+		comboBoxCantidad.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+		comboBoxCantidad.setBounds(578, 124, 63, 22);
 		panel.add(comboBoxCantidad);
-		
+
 		JLabel lblX = new JLabel("X");
-		lblX.setBounds(562, 122, 48, 14);
+		lblX.setBounds(567, 128, 48, 14);
 		panel.add(lblX);
-		
-	
-		
-	
+
 	}
+
 }

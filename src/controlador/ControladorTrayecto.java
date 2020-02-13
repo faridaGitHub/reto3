@@ -26,8 +26,6 @@ public class ControladorTrayecto implements ActionListener{
 		
 		inicializarControlador();
 		
-		
-		
 	}
 	
 	public ControladorTrayecto(Trayecto pTrayecto, Billete pVentanBillete) {
@@ -125,13 +123,14 @@ public class ControladorTrayecto implements ActionListener{
 				this.ventanaTrayecto.getComboBoxOrigen().addItem(parada.get(i));
 
 			}
+			DatosTicket.origen= ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
 			
 			for (int i = 0; i < parada.size(); i++) {
 				
 				this.ventanaTrayecto.getComboBoxDestino().addItem(parada.get(i));
 
 			}
-			
+			DatosTicket.destino = ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
 			
 
 		} catch (SQLException e) {
@@ -140,9 +139,9 @@ public class ControladorTrayecto implements ActionListener{
 		}
 		
 		
-		DatosTicket.origen= this.ventanaTrayecto.getComboBoxOrigen().getSelectedItem().toString();
+	
 		
-		DatosTicket.destino = this.ventanaTrayecto.getComboBoxDestino().getSelectedItem().toString();
+	
 		
 		
 

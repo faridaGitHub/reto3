@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+
+import javax.swing.JOptionPane;
 
 import datos.DatosTicket;
 import modelo.Hora;
@@ -20,7 +23,6 @@ public class ControladorFechas implements ActionListener {
 
 	private Fechas ventanFechas;
 	private Billete ventanaBillete;
-	private Trayecto ventanaTrayecto;
 
 	public ControladorFechas(Fechas pFechas, Billete pVentanBillete) throws SQLException {
 
@@ -28,11 +30,10 @@ public class ControladorFechas implements ActionListener {
 		this.ventanaBillete = pVentanBillete;
 
 		inicializarControlador();
-
 		rellenarComboHora();
-		
 		tipoBillete();
 		deshabilitarFechhas();
+		obtenerFecha();
 	}
 
 	public void inicializarControlador() {
@@ -45,16 +46,15 @@ public class ControladorFechas implements ActionListener {
 
 		this.ventanFechas.getBtnRegresar().addActionListener(this);
 		this.ventanFechas.getBtnRegresar().setActionCommand("BtnRegresar");
-		
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
-		
+
 		case "btnContinuar":
-			
+
 			Pagar ventanaPagar = new Pagar();
 			ventanaPagar.setVisible(true);
 
@@ -76,16 +76,16 @@ public class ControladorFechas implements ActionListener {
 		case "BtnRegresar":
 
 			Billete ventanaBillete = null;
-			
+
 			try {
-				
+
 				ventanaBillete = new Billete();
-				
+
 			} catch (SQLException e1) {
-				
+
 				e1.printStackTrace();
 			}
-			
+
 			ventanaBillete.setVisible(true);
 
 			ControladorBillete controladorBillete = new ControladorBillete(ventanaBillete);
@@ -100,7 +100,6 @@ public class ControladorFechas implements ActionListener {
 
 	private void rellenarComboHora() {
 
-		
 		ArrayList<Hora> Hora = new ArrayList<Hora>();
 
 		Lineas miLinea = (Lineas) this.ventanaBillete.getcomboBoxLinea().getSelectedItem();
@@ -112,46 +111,59 @@ public class ControladorFechas implements ActionListener {
 			for (int i = 0; i < Hora.size(); i++) {
 
 				this.ventanFechas.getComboBoxHoraIda().addItem(Hora.get(i));
-				
+
 				this.ventanFechas.getComboBoxHoraVuelta().addItem(Hora.get(i));
 
 			}
-			
+
 			DatosTicket.hora = ventanFechas.getComboBoxHoraIda().getSelectedItem().toString();
 
 		} catch (SQLException e) {
+
 			System.out.println("error metodo comboHora");
 			e.printStackTrace();
+
 		}
 
 	}
-	
+
+
+
 	public void tipoBillete() throws SQLException {
-		
-	
+
 		String tipo = this.ventanaBillete.getComboBoxTipo().getSelectedItem().toString();
-		
-		
-		if(tipo.equalsIgnoreCase("Ida")) {
-			
-			
+
+		if (tipo.equalsIgnoreCase("Ida")) {
+
 			ventanFechas.getDateChooserVuelta().setVisible(false);
 			ventanFechas.getComboBoxHoraVuelta().setVisible(false);
 			ventanFechas.getLblFechaVuelta().setVisible(false);
 			ventanFechas.getLblHoraVuelta().setVisible(false);
-			
-		}else {
-			
+
+		} else {
+
 			ventanFechas.getDateChooserVuelta().setEnabled(true);
 			ventanFechas.getComboBoxHoraVuelta().setEnabled(true);
-		}			
-		
+		}
+
 	}
+
 	public void deshabilitarFechhas() {
-		
+
 		this.ventanFechas.getDateChooserIda().setMinSelectableDate(new Date());
 		this.ventanFechas.getDateChooserVuelta().setMinSelectableDate(new Date());
 	}
-	
+
+	public String obtenerFecha() {
+
+		int dia = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.DAY_OF_MONTH);
+		int mes = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.MONTH);
+		int anio = ventanFechas.getDateChooserIda().getCalendar().get(Calendar.YEAR);
+
+		DatosTicket.fecha = (anio + "-" + mes + "-" + dia);
+
+		return DatosTicket.fecha;
+
+	}
 
 }

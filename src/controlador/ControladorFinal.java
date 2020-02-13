@@ -11,6 +11,7 @@ import datos.DatosTicket;
 import modelo.ClienteBD;
 import vista.Billete;
 import vista.Entrar;
+import vista.Fechas;
 import vista.Final;
 import vista.Inicio;
 import vista.Trayecto;
@@ -20,6 +21,7 @@ public class ControladorFinal implements ActionListener {
 	private Final ventanaFinal;
 	private Trayecto ventanaTrayecto;
 	private ClienteBD cliente;
+	private Fechas ventanFechas;
 
 	public ControladorFinal(Final pFinal) {
 
@@ -107,8 +109,14 @@ public class ControladorFinal implements ActionListener {
 	
 	ventanaFinal.getTextFieldOrigen().setText(DatosTicket.origen);
 	
-
+	ventanaFinal.getTextFieldDestino().setText(DatosTicket.destino);
+	
 	ventanaFinal.getTextFieldHora().setText(DatosTicket.hora);
+	
+	ventanaFinal.getTextFieldFecha().setText(DatosTicket.fecha);
+	
+
+	
 	
 
 		

@@ -74,6 +74,8 @@ public  class Pagar extends JFrame {
 		contentPane.add(lblAPagar);
 
 		tflApagar = new JTextField();
+		tflApagar.setText("18");
+		tflApagar.setEditable(false);
 		tflApagar.setBounds(21, 55, 86, 20);
 		tflApagar.setBackground(SystemColor.text);
 		contentPane.add(tflApagar);
